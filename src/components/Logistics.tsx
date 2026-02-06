@@ -1,0 +1,89 @@
+import React from "react";
+import { Icon } from "@iconify/react";
+
+const Logistics: React.FC = () => {
+	return (
+		<section
+			id="logistics"
+			className="py-24 px-6 border-y border-white/5  relative z-10 glass-panel"
+		>
+			<div id="line-logistics" className="absolute top-90 right-80 w-0 h-0"></div>
+			<div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative">
+				<div className="order-2 lg:order-1 relative">
+					<div className="aspect-video w-full border border-white/10 bg-[#0c0c0c] relative overflow-hidden flex items-center justify-center">
+						<div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+						<div className="relative z-10 flex flex-col items-center">
+							<div className="w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_20px_2px_rgba(6,182,212,0.6)] animate-pulse"></div>
+							<div className="mt-4 px-4 py-2 bg-slate-900/90 backdrop-blur border border-white/10 text-xs text-white">
+								SILISTRA, BG (HUB)
+							</div>
+						</div>
+						<svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+							<line
+								x1="50%"
+								y1="50%"
+								x2="20%"
+								y2="30%"
+								stroke="white"
+								strokeWidth="1"
+								strokeDasharray="4 4"
+							></line>
+							<line
+								x1="50%"
+								y1="50%"
+								x2="80%"
+								y2="20%"
+								stroke="white"
+								strokeWidth="1"
+								strokeDasharray="4 4"
+							></line>
+							<line
+								x1="50%"
+								y1="50%"
+								x2="30%"
+								y2="80%"
+								stroke="white"
+								strokeWidth="1"
+								strokeDasharray="4 4"
+							></line>
+						</svg>
+					</div>
+				</div>
+
+				<div className="order-1 lg:order-2">
+					<div className="flex items-center gap-3 mb-6">
+						<div className="h-px w-8 bg-cyan-600"></div>
+						<span className="text-xs uppercase tracking-widest text-cyan-500 font-medium">
+							Logistic Capability
+						</span>
+					</div>
+					<h2 className="text-3xl lg:text-4xl font-medium text-white tracking-tight mb-6">
+						Strategic Gateway to Europe.
+					</h2>
+					<p className="text-slate-400 leading-relaxed mb-8">
+						Europe's premier B2B supplier for high-voltage EV modules and industrial
+						power systems. Fast-track logistics and reliable delivery across the EU.
+					</p>
+					<div className="space-y-6">
+						<div className="flex gap-4">
+							<div className="w-10 h-10 shrink-0 border border-white/10 bg-white/5 flex items-center justify-center text-cyan-400">
+								<Icon icon="solar:delivery-linear" width="20" />
+							</div>
+							<div>
+								<h4 className="text-white font-medium text-sm">
+									Pan-European Logistics
+								</h4>
+								<p className="text-sm text-slate-500 mt-1">
+									Partnerships with major freight carriers for palletized delivery
+									within 3-5 days.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
+};
+
+export default Logistics;
