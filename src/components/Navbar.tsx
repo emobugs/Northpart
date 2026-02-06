@@ -5,14 +5,14 @@ const Navbar: React.FC = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	return (
-		<nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+		<nav className="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md">
 			<div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
 				<a href="#" className="flex items-center gap-3 group">
-					<div className="w-8 h-8 border border-white/20 flex items-center justify-center group-hover:border-cyan-500/50 transition-colors duration-300">
-						<span className="text-white font-medium text-lg">N</span>
+					<div className="w-8 h-8 border border-black/20 flex items-center justify-center group-hover:border-cyan-500/50 transition-colors duration-300">
+						<span className="text-black font-medium text-lg">N</span>
 					</div>
 					<div className="flex flex-col">
-						<span className="text-white tracking-[0.2em] text-sm font-semibold uppercase">
+						<span className="text-black tracking-[0.2em] text-sm font-semibold uppercase">
 							Northpart
 						</span>
 						<span className="text-xs tracking-widest text-cyan-500 uppercase">
@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
 						<a
 							key={item}
 							href={`#${item.toLowerCase()}`}
-							className="text-sm font-medium hover:text-white transition-colors"
+							className="text-sm font-medium hover:text-black transition-colors"
 						>
 							{item}
 						</a>
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
 				</div>
 
 				<div className="hidden md:flex items-center gap-6">
-					<div className="flex items-center gap-2 text-xs font-medium cursor-pointer hover:text-white transition-colors">
+					<div className="flex items-center gap-2 text-xs font-medium cursor-pointer hover:text-black transition-colors">
 						<Icon icon="solar:globe-linear" width="16" />
 						<span>EN</span>
 					</div>

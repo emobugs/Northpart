@@ -15,10 +15,10 @@ const Contact: React.FC = () => {
 	};
 
 	const itemVariants: Variants = {
-		hidden: { opacity: 0, y: 40 },
+		hidden: { opacity: 0, x: -20 },
 		visible: {
 			opacity: 1,
-			y: 0,
+			x: 0,
 			transition: {
 				duration: 1.4,
 				ease: [0.16, 1, 0.3, 1], // Супер плавно спиране
@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
 		},
 	};
 	return (
-		<section id="contact" className="py-24 px-6 border-t border-white/5 relative z-10 bg-black">
+		<section id="contact" className="py-24 px-6 border-t border-white/5 relative z-10">
 			<div className="max-w-7xl mx-auto relative">
 				<motion.div
 					initial="hidden"
@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
 					{/* ЛЯВА КОЛОНА: ИНФОРМАЦИЯ */}
 					<div className="space-y-12">
 						<motion.div variants={itemVariants}>
-							<h2 className="text-4xl font-medium text-white tracking-tight mb-4">
+							<h2 className="text-4xl font-medium heading-primary tracking-tight mb-4">
 								Contact Us
 							</h2>
 							<p className="text-slate-400 text-lg max-w-md">
@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
 									<h4 className="text-slate-500 text-xs uppercase tracking-[0.2em] font-bold">
 										Email Direct
 									</h4>
-									<p className="text-white text-lg font-medium group-hover:text-cyan-400 transition-colors">
+									<p className="text-cyan-300 text-lg font-medium group-hover:text-cyan-400 transition-colors">
 										northpartbg@gmail.com
 									</p>
 								</div>
@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
 									<h4 className="text-slate-500 text-xs uppercase tracking-[0.2em] font-bold">
 										Technical Support
 									</h4>
-									<p className="text-white text-lg font-medium group-hover:text-green-400 transition-colors">
+									<p className="text-green-300 text-lg font-medium group-hover:text-green-400 transition-colors">
 										+359892787845
 									</p>
 								</div>
@@ -101,7 +101,7 @@ const Contact: React.FC = () => {
 									<h4 className="text-slate-500 text-xs uppercase tracking-[0.2em] font-bold">
 										Sales & Logistics
 									</h4>
-									<p className="text-white text-lg font-medium group-hover:text-green-400 transition-colors">
+									<p className="text-green-300 text-lg font-medium group-hover:text-green-400 transition-colors">
 										+4745021323
 									</p>
 								</div>
@@ -122,7 +122,7 @@ const Contact: React.FC = () => {
 									</label>
 									<input
 										type="text"
-										className="w-full bg-transparent border-b border-white/10 py-2 outline-none text-white focus:border-cyan-500 transition-colors"
+										className="w-full bg-transparent border-b border-black/10 py-2 outline-none text-black focus:border-cyan-500 transition-colors"
 									/>
 								</div>
 								<div className="space-y-2">
@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
 									</label>
 									<input
 										type="text"
-										className="w-full bg-transparent border-b border-white/10 py-2 outline-none text-white focus:border-cyan-500 transition-colors"
+										className="w-full bg-transparent border-b border-black/10 py-2 outline-none text-black focus:border-cyan-500 transition-colors"
 									/>
 								</div>
 							</div>
@@ -142,7 +142,7 @@ const Contact: React.FC = () => {
 								</label>
 								<input
 									type="email"
-									className="w-full bg-transparent border-b border-white/10 py-2 outline-none text-white focus:border-cyan-500 transition-colors"
+									className="w-full bg-transparent border-b border-black/10 py-2 outline-none text-black focus:border-cyan-500 transition-colors"
 								/>
 							</div>
 
@@ -150,7 +150,7 @@ const Contact: React.FC = () => {
 								<label className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
 									Your Message
 								</label>
-								<textarea className="w-full bg-transparent border-b border-white/10 py-2 outline-none text-white focus:border-cyan-500 min-h-[120px] transition-colors resize-none"></textarea>
+								<textarea className="w-full bg-transparent border-b border-black/10 py-2 outline-none text-black focus:border-cyan-500 min-h-[120px] transition-colors resize-none"></textarea>
 							</div>
 
 							<motion.button

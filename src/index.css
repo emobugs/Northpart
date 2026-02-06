@@ -1,68 +1,73 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@layer base {
+	:root {
+		--bg-main: #f8fafc; /* slate-50 */
+		--text-primary: #0f172a; /* slate-900 */
+		--text-muted: #64748b; /* slate-500 */
+		--accent-cyan: #0891b2; /* cyan-600 */
+		--glass-bg: rgba(255, 255, 255, 0.3);
+		--glass-border: rgba(15, 23, 42, 0.08);
+	}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+	body {
+		@apply antialiased m-0 p-0 overflow-x-hidden relative;
+		background-color: var(--bg-main);
+		color: var(--text-muted);
+		font-family: "Inter", sans-serif;
+	}
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+@layer components {
+	/* КЛАС ЗА ЗАГЛАВИЯ (Headings) */
+	.heading-primary {
+		@apply font-semibold tracking-tight leading-[1.1];
+		font-family: "Manrope", sans-serif;
+		color: var(--text-primary);
+	}
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+	/* КЛАС ЗА КАРТИ (Glass Panels) */
+	.card-glass {
+		background: var(--glass-bg);
+		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		border: 1px solid var(--glass-border);
+		box-shadow:
+			0 8px 10px -2px rgba(0, 0, 0, 0.05),
+			0 25px 50px -10px rgba(15, 23, 42, 0.15),
+			0 0 25px rgba(6, 182, 212, 0.05); /* Леко цианово сияние в сянката */
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+		will-change: transform, opacity;
+		transform: translateZ(0);
+		@apply shadow-xl shadow-slate-200/50 rounded-2xl transition-all duration-500;
+	}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+	.card-glass:hover {
+		@apply -translate-y-1;
+		box-shadow:
+			0 10px 15px -3px rgba(0, 0, 0, 0.05),
+			0 30px 60px -12px rgba(15, 23, 42, 0.25),
+			0 0 30px rgba(6, 182, 212, 0.1); /* Засилваме циановото сияние */
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.card-glass {
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+		}
+	}
+
+	/* АДАПТИВЕН ТЕКСТОВ ГРАДИЕНТ */
+	.tech-gradient-text {
+		@apply bg-clip-text text-transparent bg-gradient-to-r from-slate-950 via-cyan-700 to-slate-600;
+	}
+
+	/* СВЕТЛА МРЕЖА (Background Grid) */
+	.bg-grid-light {
+		background-size: 40px 40px;
+		background-image:
+			linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+	}
 }

@@ -1,61 +1,14 @@
-@import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600&display=swap");
+/* Прилагаме го на контейнера, който обгръща всички секции (в App.tsx)
+.scroll-container {
+	height: 100vh;
+	overflow-y: scroll;
+	scroll-snap-type: y mandatory; /* Принуждава скрола да скача на секции */
+/* scroll-behavior: smooth; */
+/* scroll-padding-top: 80px; */
+/* } */
 
-@layer base {
-	body {
-		@apply bg-[#050505] text-slate-400 overflow-x-hidden relative;
-		font-family: "Inter", sans-serif;
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-family: "Manrope", sans-serif;
-	}
-}
-
-@layer components {
-	/* Динамичната мрежа на заден план */
-	.bg-grid {
-		background-size: 40px 40px;
-		background-image:
-			linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-			linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-	}
-
-	/* Стъкленият ефект (Glassmorphism) */
-	.glass-panel {
-		background: rgba(20, 20, 20, 0.3);
-		backdrop-filter: blur(3px);
-		-webkit-backdrop-filter: blur(3px);
-		border: 1px solid rgba(255, 255, 255, 0.08);
-	}
-
-	/* Текстовият градиент */
-	.tech-gradient-text {
-		@apply bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-500;
-	}
-
-	/* Сиянието на енергийните потоци */
-	.power-glow {
-		filter: drop-shadow(0 0 4px #22d3ee) drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
-	}
-}
-
-/* Стилизиране на скролбара */
-::-webkit-scrollbar {
-	width: 6px;
-}
-::-webkit-scrollbar-track {
-	background: #0a0a0a;
-}
-::-webkit-scrollbar-thumb {
-	background: #333;
-	border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-	background: #444;
-}
+/* Прилагаме го на всяка основна секция (Hero, Products, Logistics...) */
+/* section {
+	scroll-snap-align: start; /* Секцията винаги започва от горния край на екрана */
+/* scroll-snap-stop: always; Пречи на потребителя да прескочи 3 секции наведнъж */
+/* } */

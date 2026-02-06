@@ -9,6 +9,8 @@ import Products from "./components/Products";
 import "./index.css";
 import "./App.css";
 
+import Lenis from "@studio-freight/lenis";
+
 // Интерфейс за частиците в анимацията
 interface Star {
 	x: number;
@@ -20,6 +22,31 @@ interface Star {
 const App: React.FC = () => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+	useEffect(() => {
+		// Инициализация на Lenis
+		const lenis = new Lenis({
+			duration: 1.2,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+			orientation: "vertical",
+			gestureOrientation: "vertical",
+			smoothWheel: true,
+			wheelMultiplier: 1,
+			infinite: false,
+		});
+
+		// Request Animation Frame за плавно движение
+		function raf(time: number) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+
+		// Почистване при демонтиране
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
@@ -65,7 +92,7 @@ const App: React.FC = () => {
 	}, []);
 
 	return (
-		<div className="relative min-h-screen bg-[#050505]">
+		<div className="relative min-h-screen scroll-container">
 			{/* Котва в самото начало */}
 			<div id="pt-nav" className="absolute top-0 left-0 w-0 h-0"></div>
 

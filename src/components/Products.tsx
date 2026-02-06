@@ -61,7 +61,7 @@ const Products: React.FC = () => {
 			<div className="max-w-7xl mx-auto">
 				<div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 					<div>
-						<h2 className="text-3xl font-medium text-white tracking-tight">
+						<h2 className="text-3xl font-medium heading-primary tracking-tight">
 							Product Categories
 						</h2>
 						<p className="text-slate-400 mt-2 max-w-md">
@@ -79,7 +79,7 @@ const Products: React.FC = () => {
 							transition={{ duration: 1 }}
 							variants={cardVariants}
 							key={idx}
-							className={`group relative glass-panel border border-white/5 hover:border-cyan-900/50 p-8 transition-all duration-300 ${item.span || ""}`}
+							className={`group relative card-glass border border-black/5 hover:border-cyan-500/30 p-8 transition-all duration-300 ${item.span || ""}`}
 						>
 							<motion.div
 								initial={{ opacity: 0 }}
@@ -91,7 +91,7 @@ const Products: React.FC = () => {
 							<div className="absolute z-10 top-8 right-8 text-slate-600 group-hover:text-cyan-500 transition-colors">
 								<Icon icon={item.icon} width="32" />
 							</div>
-							<h3 className="text-lg font-medium text-white mt-8 mb-2">
+							<h3 className="text-lg font-medium mt-8 mb-2 heading-primary">
 								{item.title}
 							</h3>
 							<p className="text-sm text-slate-500 mb-6 leading-relaxed">

@@ -8,17 +8,17 @@ const Hero: React.FC = () => {
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: 0.3, // По-голямо разстояние между заглавието и бутоните
+				staggerChildren: 0.6, // По-голямо разстояние между заглавието и бутоните
 				delayChildren: 0.4,
 			},
 		},
 	};
 
 	const itemVariants: Variants = {
-		hidden: { opacity: 0, y: 40 },
+		hidden: { opacity: 0, x: -20 },
 		visible: {
 			opacity: 1,
-			y: 0,
+			x: 0,
 			transition: {
 				duration: 1.4,
 				ease: [0.16, 1, 0.3, 1], // Супер плавно спиране
@@ -27,14 +27,15 @@ const Hero: React.FC = () => {
 	};
 	return (
 		<motion.header
+			id="hero"
 			variants={heroContainerVariants}
 			initial="hidden"
 			animate="visible"
 			viewport={{ once: true, amount: 0.3 }}
-			className="lg:pt-48 lg:pb-32 pt-32 px-6 relative border-b border-white/5"
+			className="lg:pt-48 lg:pb-32 pt-32 px-2 relative border-b"
 		>
 			<div id="line-start" className="absolute top-1/2 left-4 w-0 h-0"></div>
-			<div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+			<div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center wide-full relative z-10">
 				<div className="space-y-8">
 					<motion.div
 						variants={itemVariants}
@@ -46,7 +47,7 @@ const Hero: React.FC = () => {
 
 					<motion.h1
 						variants={itemVariants}
-						className="text-4xl lg:text-6xl font-medium tracking-tight text-white leading-[1.1]"
+						className="text-4xl lg:text-6xl font-medium tracking-tight heading-primary leading-[1.1]"
 					>
 						High-Performance EV <br />
 						<span className="tech-gradient-text">& Hybrid Battery Systems</span>
@@ -54,7 +55,7 @@ const Hero: React.FC = () => {
 
 					<motion.p
 						variants={itemVariants}
-						className="text-lg text-slate-400 max-w-xl leading-relaxed"
+						className="text-lg text-slate-500 max-w-xl leading-relaxed"
 					>
 						Europe's strategic B2B partner for high-voltage EV modules and LiFePO4
 						solutions
@@ -67,6 +68,7 @@ const Hero: React.FC = () => {
 						variants={itemVariants}
 						className="flex flex-col sm:flex-row gap-4 pt-4"
 					>
+						{/* View inventory button */}
 						<motion.a
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}
@@ -75,10 +77,11 @@ const Hero: React.FC = () => {
 						>
 							View Inventory <Icon icon="solar:box-minimalistic-linear" width="18" />
 						</motion.a>
+						{/* Inquiry button */}
 						<motion.a
 							whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
 							href="#contact"
-							className="flex items-center justify-center gap-3 border border-white/10 hover:border-white/30 text-white px-8 py-3.5 text-sm font-medium transition-all backdrop-blur-sm bg-white/5"
+							className="flex items-center justify-center gap-3 border border-black/10 hover:border-black/30 text-black px-8 py-3.5 text-sm font-medium transition-all backdrop-blur-md bg-white/5"
 						>
 							Wholesale Inquiry{" "}
 							<Icon icon="solar:users-group-rounded-linear" width="18" />
@@ -87,7 +90,7 @@ const Hero: React.FC = () => {
 
 					<motion.div
 						variants={itemVariants}
-						className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5"
+						className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5 text-center"
 					>
 						{[
 							{ val: "250+", lab: "Batteries SOLD" },
@@ -95,7 +98,7 @@ const Hero: React.FC = () => {
 							{ val: "EU", lab: "Coverage" },
 						].map((stat, i) => (
 							<div key={i}>
-								<div className="text-2xl font-semibold text-white">{stat.val}</div>
+								<div className="text-2xl font-semibold text-black">{stat.val}</div>
 								<div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
 									{stat.lab}
 								</div>
@@ -121,14 +124,14 @@ const Hero: React.FC = () => {
 						className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent rounded-full blur-3xl"
 					></motion.div>
 					<motion.div
-						animate={{ y: [0, -15, 0] }}
+						animate={{ x: [0, -15, 0] }}
 						transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
 						className="relative w-full max-w-md aspect-square grid grid-cols-2 gap-4 p-8 border border-white/5 bg-white/[0.02] backdrop-blur-sm"
 					>
 						{/* Светкавица */}
 						<motion.div
 							whileHover={{ y: -5 }}
-							className="flex flex-col bg-white/5 border border-white/10 p-6 justify-between hover:border-cyan-500/30 transition-colors"
+							className="flex flex-col card-glass border border-white/10 p-6 justify-between hover:border-cyan-500/30 transition-colors"
 						>
 							<Icon icon="solar:bolt-linear" className="text-cyan-400" width="32" />
 							<div className="text-[10px] font-mono text-slate-500">MOD-HV-01</div>
@@ -136,7 +139,7 @@ const Hero: React.FC = () => {
 						{/* Батерия */}
 						<motion.div
 							whileHover={{ y: -5 }}
-							className="bg-white/5 border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-500/30 transition-colors"
+							className=" border card-glass border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-500/30 transition-colors"
 						>
 							<Icon
 								icon="solar:battery-charge-linear"
@@ -145,9 +148,10 @@ const Hero: React.FC = () => {
 							/>
 							<div className="text-[10px] font-mono text-slate-500">LFP-SYS-4</div>
 						</motion.div>
+						{/* 2спан отдолу */}
 						<motion.div
-							whileHover={{ y: 5 }}
-							className="col-span-2 bg-white/5 border border-white/10 p-6 flex flex-col justify-between"
+							whileHover={{ y: -5 }}
+							className="col-span-2 card-glass border border-white/10 p-6 flex flex-col justify-between"
 						>
 							<div className="flex items-start justify-between">
 								<Icon
@@ -163,6 +167,7 @@ const Hero: React.FC = () => {
 								<motion.div
 									initial={{ width: 0 }}
 									animate={{ width: "84%" }}
+									whileInView={{ opacity: 1, y: 0 }}
 									transition={{ duration: 1.5, delay: 1 }}
 									className="bg-cyan-500 w-3/4 h-full"
 								></motion.div>

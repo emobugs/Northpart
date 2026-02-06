@@ -12,23 +12,23 @@ const Gallery: React.FC = () => {
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: 0.5, // Децата ще се появяват едно след друго
+				staggerChildren: 0.2, // Децата ще се появяват едно след друго
 			},
 		},
 	};
 	const itemVariants: Variants = {
-		hidden: { opacity: 0, y: 40 },
+		hidden: { opacity: 0, y: 20 },
 		visible: {
 			opacity: 1,
 			y: 0,
-			transition: { duration: 0.6, ease: "easeOut" },
+			transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
 		},
 	};
 	return (
-		<section id="gallery" className="py-24 px-6 glass-panel relative z-10 bg-black">
+		<section id="gallery" className="py-24 px-6 relative z-10 ">
 			<div className="max-w-7xl mx-auto relative">
 				<div className="flex justify-between items-end mb-12">
-					<h2 className="text-3xl font-medium text-white tracking-tight">
+					<h2 className="text-3xl font-medium heading-primary tracking-tight">
 						Technical Showcase
 					</h2>
 				</div>
@@ -44,7 +44,7 @@ const Gallery: React.FC = () => {
 					{/* 1. ГЛАВЕН БЛОК (EV Module) */}
 					<motion.div
 						variants={itemVariants}
-						className="col-span-2 row-span-2 relative group overflow-hidden border border-white/10 bg-[#111] min-h-[300px] md:min-h-[400px] rounded-xl"
+						className="col-span-2 row-span-2 relative group overflow-hidden border border-white/10 card-glass min-h-[300px] md:min-h-[400px] rounded-xl"
 					>
 						<img
 							src={evModule}
@@ -62,7 +62,7 @@ const Gallery: React.FC = () => {
 					{/* 2. ГОРЕ ВЛЯВО (Сините батерии) */}
 					<motion.div
 						variants={itemVariants}
-						className="aspect-square relative group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-6 md:p-8 rounded-xl"
+						className="aspect-square relative card-glass group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-6 md:p-8 rounded-xl"
 					>
 						<img
 							src={lifeP04Cell}
@@ -74,7 +74,7 @@ const Gallery: React.FC = () => {
 					{/* 3. ГОРЕ ВДЯСНО (Техническа схема) - ЦЕНТРИРАНА */}
 					<motion.div
 						variants={itemVariants}
-						className="aspect-square relative group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-5 rounded-xl"
+						className="aspect-square relative card-glass group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-5 rounded-xl"
 					>
 						<img
 							src={diagram}
@@ -86,7 +86,7 @@ const Gallery: React.FC = () => {
 					{/* 4. ДОЛУ ВЛЯВО (Стек модули) - ЦЕНТРИРАН */}
 					<motion.div
 						variants={itemVariants}
-						className="aspect-square relative group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-5 rounded-xl"
+						className="aspect-square relative group card-glass overflow-hidden border border-white/10 bg-white flex items-center justify-center p-5 rounded-xl"
 					>
 						<img
 							src={moduleBatteries}
@@ -98,7 +98,7 @@ const Gallery: React.FC = () => {
 					{/* 5. ДОЛУ ВДЯСНО (Цилиндри) */}
 					<motion.div
 						variants={itemVariants}
-						className="aspect-square relative group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-6 md:p-8 rounded-xl"
+						className="aspect-square relative group card-glass overflow-hidden border border-white/10 bg-white flex items-center justify-center p-6 md:p-8 rounded-xl"
 					>
 						<img
 							src={cylinder}

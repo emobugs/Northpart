@@ -91,7 +91,7 @@ const Logistics: React.FC = () => {
 					{/* надписа с линията */}
 					<motion.h2
 						variants={itemVariants}
-						className="text-3xl lg:text-4xl font-medium text-white tracking-tight mb-6"
+						className="text-3xl lg:text-4xl font-medium text-black tracking-tight mb-6"
 					>
 						Strategic Gateway to Europe.
 					</motion.h2>
@@ -108,7 +108,7 @@ const Logistics: React.FC = () => {
 								<Icon icon="solar:delivery-linear" width="20" />
 							</div>
 							<div>
-								<h4 className="text-white font-medium text-sm">
+								<h4 className="text-black font-medium text-sm">
 									Pan-European Logistics
 								</h4>
 								<p className="text-sm text-slate-500 mt-1">
