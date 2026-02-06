@@ -1,47 +1,94 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import { motion, type Variants } from "framer-motion";
 
 const Hero: React.FC = () => {
+	const heroContainerVariants: Variants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2, // По-голямо разстояние между заглавието и бутоните
+				delayChildren: 0.3,
+			},
+		},
+	};
+
+	const itemVariants: Variants = {
+		hidden: { opacity: 0, y: 40 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 1,
+				ease: [0.16, 1, 0.3, 1], // Супер плавно спиране
+			},
+		},
+	};
 	return (
-		<header className="lg:pt-48 lg:pb-32 pt-32 px-6 relative border-b border-white/5">
+		<motion.header
+			variants={heroContainerVariants}
+			initial="hidden"
+			animate="visible"
+			viewport={{ once: true, amount: 0.3 }}
+			className="lg:pt-48 lg:pb-32 pt-32 px-6 relative border-b border-white/5"
+		>
 			<div id="line-start" className="absolute top-1/2 left-4 w-0 h-0"></div>
 			<div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
 				<div className="space-y-8">
-					<div className="inline-flex items-center gap-2 border border-cyan-900/30 bg-cyan-950/10 px-3 py-1 text-cyan-400 text-xs font-medium tracking-wide rounded-full">
+					<motion.div
+						variants={itemVariants}
+						className="inline-flex items-center gap-2 border border-cyan-900/30 bg-cyan-950/10 px-3 py-1 text-cyan-400 text-xs font-medium tracking-wide rounded-full"
+					>
 						<span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
 						Silistra Warehouse Operational
-					</div>
+					</motion.div>
 
-					<h1 className="text-4xl lg:text-6xl font-medium tracking-tight text-white leading-[1.1]">
+					<motion.h1
+						variants={itemVariants}
+						className="text-4xl lg:text-6xl font-medium tracking-tight text-white leading-[1.1]"
+					>
 						High-Performance EV <br />
 						<span className="tech-gradient-text">& Hybrid Battery Systems</span>
-					</h1>
+					</motion.h1>
 
-					<p className="text-lg text-slate-400 max-w-xl leading-relaxed">
+					<motion.p
+						variants={itemVariants}
+						className="text-lg text-slate-400 max-w-xl leading-relaxed"
+					>
 						Europe's strategic B2B partner for high-voltage EV modules and LiFePO4
 						solutions
 						<span className="text-white ml-2">
 							<br></br>250+ units in stock
 						</span>
-					</p>
+					</motion.p>
 
-					<div className="flex flex-col sm:flex-row gap-4 pt-4">
-						<a
+					<motion.div
+						variants={itemVariants}
+						className="flex flex-col sm:flex-row gap-4 pt-4"
+					>
+						<motion.a
+							whileHover={{ scale: 1.02 }}
+							whileTap={{ scale: 0.98 }}
 							href="#products"
 							className="flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-3.5 text-md font-medium transition-all shadow-[0_0_20px_-5px_rgba(8,145,178,0.4)]"
 						>
 							View Inventory <Icon icon="solar:box-minimalistic-linear" width="18" />
-						</a>
-						<a
+						</motion.a>
+						<motion.a
+							whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
 							href="#contact"
 							className="flex items-center justify-center gap-3 border border-white/10 hover:border-white/30 text-white px-8 py-3.5 text-sm font-medium transition-all backdrop-blur-sm bg-white/5"
 						>
 							Wholesale Inquiry{" "}
 							<Icon icon="solar:users-group-rounded-linear" width="18" />
-						</a>
-					</div>
+						</motion.a>
+					</motion.div>
 
-					<div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5">
+					<motion.div
+						variants={itemVariants}
+						className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5"
+					>
 						{[
 							{ val: "250+", lab: "Batteries SOLD" },
 							{ val: "24h", lab: "Dispatch" },
@@ -54,26 +101,54 @@ const Hero: React.FC = () => {
 								</div>
 							</div>
 						))}
-					</div>
+					</motion.div>
 				</div>
 
 				{/* Battery Module Visual */}
-				<div className="relative h-full min-h-[400px] w-full flex items-center justify-center">
-					<div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent rounded-full blur-3xl"></div>
-					<div className="relative w-full max-w-md aspect-square grid grid-cols-2 gap-4 p-8 border border-white/5 bg-white/[0.02] backdrop-blur-sm">
-						<div className="flex flex-col bg-white/5 border border-white/10 p-6 justify-between hover:border-cyan-500/30 transition-colors">
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.3 }}
+					variants={itemVariants}
+					className="relative h-full min-h-[400px] w-full flex items-center justify-center"
+				>
+					<motion.div
+						animate={{
+							scale: [1, 1.2, 1],
+							opacity: [0.5, 0.8, 0.5],
+						}}
+						transition={{ duration: 4, repeat: Infinity }}
+						className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent rounded-full blur-3xl"
+					></motion.div>
+					<motion.div
+						animate={{ y: [0, -15, 0] }}
+						transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+						className="relative w-full max-w-md aspect-square grid grid-cols-2 gap-4 p-8 border border-white/5 bg-white/[0.02] backdrop-blur-sm"
+					>
+						{/* Светкавица */}
+						<motion.div
+							whileHover={{ y: -5 }}
+							className="flex flex-col bg-white/5 border border-white/10 p-6 justify-between hover:border-cyan-500/30 transition-colors"
+						>
 							<Icon icon="solar:bolt-linear" className="text-cyan-400" width="32" />
 							<div className="text-[10px] font-mono text-slate-500">MOD-HV-01</div>
-						</div>
-						<div className="bg-white/5 border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-500/30 transition-colors">
+						</motion.div>
+						{/* Батерия */}
+						<motion.div
+							whileHover={{ y: -5 }}
+							className="bg-white/5 border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-500/30 transition-colors"
+						>
 							<Icon
 								icon="solar:battery-charge-linear"
 								className="text-cyan-400"
 								width="32"
 							/>
 							<div className="text-[10px] font-mono text-slate-500">LFP-SYS-4</div>
-						</div>
-						<div className="col-span-2 bg-white/5 border border-white/10 p-6 flex flex-col justify-between">
+						</motion.div>
+						<motion.div
+							whileHover={{ y: 5 }}
+							className="col-span-2 bg-white/5 border border-white/10 p-6 flex flex-col justify-between"
+						>
 							<div className="flex items-start justify-between">
 								<Icon
 									icon="solar:server-square-linear"
@@ -85,16 +160,21 @@ const Hero: React.FC = () => {
 								</span>
 							</div>
 							<div className="mt-4 h-1 w-full bg-slate-800 overflow-hidden">
-								<div className="bg-cyan-500 w-3/4 h-full"></div>
+								<motion.div
+									initial={{ width: 0 }}
+									animate={{ width: "84%" }}
+									transition={{ duration: 1.5, delay: 1 }}
+									className="bg-cyan-500 w-3/4 h-full"
+								></motion.div>
 							</div>
 							<div className="mt-2 text-xs font-mono text-slate-400">
 								System Capacity: 84%
 							</div>
-						</div>
-					</div>
-				</div>
+						</motion.div>
+					</motion.div>
+				</motion.div>
 			</div>
-		</header>
+		</motion.header>
 	);
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import { motion, type Variants } from "framer-motion";
 
 interface Category {
 	title: string;
@@ -31,6 +32,35 @@ const categories: Category[] = [
 ];
 
 const Products: React.FC = () => {
+	const cardGlowVariants: Variants = {
+		hidden: {
+			opacity: 0,
+			y: 20,
+			borderColor: "rgba(255, 255, 255, 0.05)",
+			boxShadow: "0px 0px 0px rgba(6, 182, 212, 0)",
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			borderColor: [
+				"rgba(255, 255, 255, 0.05)",
+				"rgba(6, 182, 212, 0.5)",
+				"rgba(255, 255, 255, 0.05)",
+			],
+			boxShadow: [
+				"0px 0px 0px rgba(6, 182, 212, 0)",
+				"0px 0px 20px rgba(6, 182, 212, 0.2)",
+				"0px 0px 0px rgba(6, 182, 212, 0)",
+			],
+			transition: {
+				duration: 1.2,
+				ease: "easeInOut",
+				// Рамката светва малко след като Fade In анимацията е започнала
+				borderColor: { delay: 0.5, duration: 1 },
+				boxShadow: { delay: 0.5, duration: 1 },
+			},
+		},
+	};
 	return (
 		<section id="products" className="py-24 px-6 relative z-10">
 			<div id="line-products" className="absolute top-1/2 left-80 w-0 h-0"></div>
