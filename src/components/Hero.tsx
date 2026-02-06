@@ -8,8 +8,8 @@ const Hero: React.FC = () => {
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: 0.2, // По-голямо разстояние между заглавието и бутоните
-				delayChildren: 0.3,
+				staggerChildren: 0.3, // По-голямо разстояние между заглавието и бутоните
+				delayChildren: 0.4,
 			},
 		},
 	};
@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
 			opacity: 1,
 			y: 0,
 			transition: {
-				duration: 1,
+				duration: 1.4,
 				ease: [0.16, 1, 0.3, 1], // Супер плавно спиране
 			},
 		},
@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
 							scale: [1, 1.2, 1],
 							opacity: [0.5, 0.8, 0.5],
 						}}
-						transition={{ duration: 4, repeat: Infinity }}
+						transition={{ delay: 1, duration: 4, repeat: Infinity }}
 						className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent rounded-full blur-3xl"
 					></motion.div>
 					<motion.div

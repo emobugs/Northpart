@@ -6,7 +6,6 @@ import Logistics from "./components/Logistics";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
-import ScrollProgress from "./components/ScrollProgress";
 import "./index.css";
 import "./App.css";
 

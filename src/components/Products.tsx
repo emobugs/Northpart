@@ -32,32 +32,26 @@ const categories: Category[] = [
 ];
 
 const Products: React.FC = () => {
-	const cardGlowVariants: Variants = {
+	const cardVariants: Variants = {
 		hidden: {
 			opacity: 0,
 			y: 20,
 			borderColor: "rgba(255, 255, 255, 0.05)",
-			boxShadow: "0px 0px 0px rgba(6, 182, 212, 0)",
 		},
 		visible: {
 			opacity: 1,
 			y: 0,
+			// Анимираме цвета на бордюра: от сиво -> цианово -> обратно
 			borderColor: [
 				"rgba(255, 255, 255, 0.05)",
-				"rgba(6, 182, 212, 0.5)",
+				"rgba(6, 182, 212, 0.4)",
 				"rgba(255, 255, 255, 0.05)",
 			],
-			boxShadow: [
-				"0px 0px 0px rgba(6, 182, 212, 0)",
-				"0px 0px 20px rgba(6, 182, 212, 0.2)",
-				"0px 0px 0px rgba(6, 182, 212, 0)",
-			],
 			transition: {
-				duration: 1.2,
-				ease: "easeInOut",
-				// Рамката светва малко след като Fade In анимацията е започнала
-				borderColor: { delay: 0.5, duration: 1 },
-				boxShadow: { delay: 0.5, duration: 1 },
+				duration: 0.8,
+				ease: "easeOut",
+				// Светлинният импулс на бордюра се случва малко след появата
+				borderColor: { delay: 0.3, duration: 1.2 },
 			},
 		},
 	};
@@ -78,11 +72,23 @@ const Products: React.FC = () => {
 
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
 					{categories.map((item, idx) => (
-						<div
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, amount: 0.2 }}
+							transition={{ duration: 1 }}
+							variants={cardVariants}
 							key={idx}
 							className={`group relative glass-panel border border-white/5 hover:border-cyan-900/50 p-8 transition-all duration-300 ${item.span || ""}`}
 						>
-							<div className="absolute top-8 right-8 text-slate-600 group-hover:text-cyan-500 transition-colors">
+							<motion.div
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: [0, 1, 0] }} // Светва и изгасва
+								viewport={{ once: true }}
+								transition={{ delay: 0.5 + idx * 0.4, duration: 1.5 }}
+								className="absolute inset-0 border border-cyan-500 rounded-[inherit] pointer-events-none z-0"
+							/>
+							<div className="absolute z-10 top-8 right-8 text-slate-600 group-hover:text-cyan-500 transition-colors">
 								<Icon icon={item.icon} width="32" />
 							</div>
 							<h3 className="text-lg font-medium text-white mt-8 mb-2">
@@ -106,14 +112,7 @@ const Products: React.FC = () => {
 									</li>
 								))}
 							</ul>
-
-							{/* <a
-								href="#"
-								className="inline-flex items-center text-xs font-semibold text-white uppercase tracking-wider group-hover:text-cyan-400 transition-colors"
-							>
-								Check Availability
-							</a> */}
-						</div>
+						</motion.div>
 					))}
 				</div>
 			</div>
