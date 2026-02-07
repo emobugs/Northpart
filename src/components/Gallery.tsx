@@ -1,12 +1,13 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import evModule from "../assets/batteries/teslay.jpg";
-import lifeP04Cell from "../assets/batteries/lifeP04Cells.webp";
-import cylinder from "../assets/batteries/lifepoCylinder.jpg";
-import moduleBatteries from "../assets/batteries/module.jpg";
-import diagram from "../assets/batteries/diagram.webp";
+import { GALLERY_ITEMS } from "../constants/galleryData";
+import { main } from "framer-motion/m";
 
 const Gallery: React.FC = () => {
+	// Намираме главната снимка и останалите
+	const mainItem = GALLERY_ITEMS.find((item) => item.isMain);
+	const otherItems = GALLERY_ITEMS.filter((item) => !item.isMain);
+
 	const containerVariants: Variants = {
 		hidden: { opacity: 0 },
 		visible: {
@@ -25,89 +26,65 @@ const Gallery: React.FC = () => {
 		},
 	};
 	return (
-		<section id="gallery" className="py-24 px-6 relative z-10 ">
-			<div className="max-w-7xl mx-auto relative">
+		<section id="gallery" className="p-24 px-6 relative z-10 ">
+			{/* Heading */}
+			<div className="max-w-7xl mx-auto px-6 relative">
 				<div className="flex justify-between items-end mb-12">
-					<h2 className="text-3xl font-medium heading-primary tracking-tight">
-						Technical Showcase
-					</h2>
+					<h2 className="heading-primary text-3xl font-medium tracking-tight">Gallery</h2>
 				</div>
-
-				{/*Gallery container  */}
-				<motion.div
-					variants={containerVariants}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true, amount: 0.3 }}
-					className="grid grid-cols-2 md:grid-cols-4 gap-4 items-stretch"
-				>
-					{/* 1. ГЛАВЕН БЛОК (EV Module) */}
-					<motion.div
-						variants={itemVariants}
-						className="col-span-2 row-span-2 relative group overflow-hidden border border-white/10 card-glass min-h-[300px] md:min-h-[400px] rounded-xl"
-					>
-						<img
-							src={evModule}
-							className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-							alt="EV Module"
-						/>
-						<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-						<div className="absolute bottom-6 left-6 z-20">
-							<p className="text-white text-sm font-medium tracking-wide">
-								High-Voltage EV Modules
-							</p>
-						</div>
-					</motion.div>
-
-					{/* 2. ГОРЕ ВЛЯВО (Сините батерии) */}
-					<motion.div
-						variants={itemVariants}
-						className="aspect-square relative card-glass group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-6 md:p-8 rounded-xl"
-					>
-						<img
-							src={lifeP04Cell}
-							className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
-							alt="LifeP04 Cell"
-						/>
-					</motion.div>
-
-					{/* 3. ГОРЕ ВДЯСНО (Техническа схема) - ЦЕНТРИРАНА */}
-					<motion.div
-						variants={itemVariants}
-						className="aspect-square relative card-glass group overflow-hidden border border-white/10 bg-white flex items-center justify-center p-5 rounded-xl"
-					>
-						<img
-							src={diagram}
-							className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
-							alt="Diagram"
-						/>
-					</motion.div>
-
-					{/* 4. ДОЛУ ВЛЯВО (Стек модули) - ЦЕНТРИРАН */}
-					<motion.div
-						variants={itemVariants}
-						className="aspect-square relative group card-glass overflow-hidden border border-white/10 bg-white flex items-center justify-center p-5 rounded-xl"
-					>
-						<img
-							src={moduleBatteries}
-							className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
-							alt="Diagram"
-						/>
-					</motion.div>
-
-					{/* 5. ДОЛУ ВДЯСНО (Цилиндри) */}
-					<motion.div
-						variants={itemVariants}
-						className="aspect-square relative group card-glass overflow-hidden border border-white/10 bg-white flex items-center justify-center p-6 md:p-8 rounded-xl"
-					>
-						<img
-							src={cylinder}
-							className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
-							alt="Cylindrical Cells"
-						/>
-					</motion.div>
-				</motion.div>
 			</div>
+			{/* Gallery container */}
+			<motion.div
+				variants={containerVariants}
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true, amount: 0.3 }}
+				className="
+				/* Мобилен - хоризонтален Слайдер */
+				flex overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 scrollbar-hide
+				/* Десктоп */
+				md:grid md:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 md:gap-4 md:items-stretch
+				"
+			>
+				{/* Голямо изображение */}
+				{mainItem && (
+					<motion.div
+						variants={itemVariants}
+						className="
+				/* Мобилен */
+				shrink-0 w-[85vw] snap-center min-h-[400px]
+				/* десктоп */
+				card-glass md:w-auto md:shrink md:col-span-2 md:row-span-2 relative group overflow-hidden border border-white/10 rounded-xl bg-white
+				"
+					>
+						<img
+							src={mainItem.src}
+							alt={mainItem.alt}
+							className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+						/>
+					</motion.div>
+				)}
+				{/* Всички останали изображеиния*/}
+				{otherItems.map((img) => (
+					<motion.div
+						key={img.id}
+						variants={itemVariants}
+						className="
+					/* Мобилен */
+					shrink-0 w-[80vw] snap-center aspect-square
+					/* desktop */
+					md:w-auto md:shrink md:aspect-square
+					relative card-glass group overflow-hidden border border-white/10 rounded-xl bg-white flex items-center justify-center p-6
+					"
+					>
+						<img
+							src={img.src}
+							alt={img.alt}
+							className="w-full h-full object-contain transition-transform duration-800 group-hover:scale-110"
+						/>
+					</motion.div>
+				))}
+			</motion.div>
 		</section>
 	);
 };
