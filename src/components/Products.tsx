@@ -70,22 +70,40 @@ const Products: React.FC = () => {
 					</div>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+				<div className="flex overflow-x-auto snap-x snap-mandatory md:flex-none md:grid md:grid-cols-2 lg:grid-cols-3 gap-2 px-15 py-20 -m-6 scrollbar-hide">
 					{categories.map((item, idx) => (
 						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, amount: 0.2 }}
-							transition={{ duration: 1 }}
+							initial={{
+								opacity: 0.5,
+								y: 0,
+							}}
+							whileInView={{ opacity: 1, y: -15, borderColor: "rgba(6,182,212,0.4)" }}
+							whileHover={{
+								y: -15,
+								scale: 1.01,
+								borderColor: "rgba(6, 182, 212, 0.8)",
+								transition: { duration: 0.6, ease: "easeOut" },
+							}}
+							viewport={{ once: false, amount: 0.5 }}
+							transition={{
+								type: "spring",
+								stiffness: 70,
+								damping: 30,
+								mass: 1,
+								opacity: { duration: 0.4 },
+								duration: 1,
+								ease: "easeOut",
+							}}
 							variants={cardVariants}
 							key={idx}
-							className={`group relative card-glass border border-black/5 hover:border-cyan-500/30 p-8 transition-all duration-300 ${item.span || ""}`}
+							className={`shrink-0 w-[80vw] md:w-full md:shrink md:snap-align-none snap-center group relative card-glass border border-black/5 p-8`}
 						>
 							<motion.div
 								initial={{ opacity: 0 }}
-								whileInView={{ opacity: [0, 1, 0] }} // Светва и изгасва
-								viewport={{ once: true }}
-								transition={{ delay: 0.5 + idx * 0.4, duration: 1.5 }}
+								whileInView={{ opacity: [0, 1, 0.3] }} // Светва и изгасва
+								viewport={{ once: false, amount: 0.6 }}
+								transition={{ ease: "easeInOut" }}
+								// transition={{ delay: 0.5 + idx * 0.4, duration: 1.5 }}
 								className="absolute inset-0 border border-cyan-500 rounded-[inherit] pointer-events-none z-0"
 							/>
 							<div className="absolute z-10 top-8 right-8 text-slate-600 group-hover:text-cyan-500 transition-colors">
