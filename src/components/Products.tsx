@@ -41,7 +41,7 @@ const Products: React.FC = () => {
 		visible: {
 			opacity: 1,
 			y: 0,
-			// Анимираме цвета на бордюра: от сиво -> цианово -> обратно
+			// Анимираме цвета на border-a: от сиво -> цианово -> обратно
 			borderColor: [
 				"rgba(255, 255, 255, 0.05)",
 				"rgba(6, 182, 212, 0.4)",
@@ -103,7 +103,6 @@ const Products: React.FC = () => {
 								whileInView={{ opacity: [0, 1, 0.3] }} // Светва и изгасва
 								viewport={{ once: false, amount: 0.6 }}
 								transition={{ ease: "easeInOut" }}
-								// transition={{ delay: 0.5 + idx * 0.4, duration: 1.5 }}
 								className="absolute inset-0 border border-cyan-500 rounded-[inherit] pointer-events-none z-0"
 							/>
 							<div className="absolute z-10 top-8 right-8 text-slate-600 group-hover:text-cyan-500 transition-colors">

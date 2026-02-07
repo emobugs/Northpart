@@ -1,12 +1,67 @@
-import React from "react";
-import { motion, type Variants } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { GALLERY_ITEMS } from "../constants/galleryData";
-import { main } from "framer-motion/m";
+import { Icon } from "@iconify/react";
 
 const Gallery: React.FC = () => {
-	// Намираме главната снимка и останалите
-	const mainItem = GALLERY_ITEMS.find((item) => item.isMain);
-	const otherItems = GALLERY_ITEMS.filter((item) => !item.isMain);
+	{
+		/*Init scroll control and function */
+	}
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const [canScroll, setCanScroll] = useState({ left: false, right: false });
+
+	/*Галерия  */
+	/*Проверка за ширината */
+	const checkScroll = () => {
+		if (scrollRef.current) {
+			const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+			setCanScroll({
+				left: scrollLeft > 10, // Има ли съдържание наляво
+				right: scrollLeft + clientWidth < scrollWidth - 10, // Има ли надясно
+			});
+		}
+	};
+
+	const scroll = (direction: "left" | "right") => {
+		if (scrollRef.current) {
+			const containerWidth = scrollRef.current.offsetWidth;
+			const scrollAmount =
+				direction === "left" ? -containerWidth * 0.6 : containerWidth * 0.6;
+
+			scrollRef.current.scrollBy({
+				left: scrollAmount,
+				behavior: "smooth",
+			});
+		}
+	};
+
+	/*Проверка при промяна или скрол на галерията */
+	useEffect(() => {
+		const node = scrollRef.current;
+		if (node) {
+			checkScroll();
+			node.addEventListener("scroll", checkScroll);
+			window.addEventListener("resize", checkScroll);
+
+			// Малък setTimeout, за да изчакаме рендирането на изображенията
+			const timeout = setTimeout(checkScroll, 500);
+
+			return () => {
+				node.removeEventListener("scroll", checkScroll);
+				window.removeEventListener("resize", checkScroll);
+				clearTimeout(timeout);
+			};
+		}
+	}, [GALLERY_ITEMS]); // проверяване, ако се добавят нови снимки
+
+	const [selectedImg, setSelectedImg] = useState<GalleryItem | null>(null);
+	useEffect(() => {
+		if (selectedImg) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+	}, [selectedImg]);
 
 	const containerVariants: Variants = {
 		hidden: { opacity: 0 },
@@ -26,65 +81,189 @@ const Gallery: React.FC = () => {
 		},
 	};
 	return (
-		<section id="gallery" className="p-24 px-6 relative z-10 ">
+		<section id="gallery" className="p-24 px-6 relative z-10 overflow-x-hidden">
 			{/* Heading */}
 			<div className="max-w-7xl mx-auto px-6 relative">
 				<div className="flex justify-between items-end mb-12">
 					<h2 className="heading-primary text-3xl font-medium tracking-tight">Gallery</h2>
 				</div>
 			</div>
-			{/* Gallery container */}
-			<motion.div
-				variants={containerVariants}
-				initial="hidden"
-				whileInView="visible"
-				viewport={{ once: true, amount: 0.3 }}
-				className="
+
+			{/* Стрелки */}
+			<div className="relative max-w-7xl mx-auto px-6 group">
+				{/* СТРЕЛКА НАЛЯВО */}
+				<button
+					onClick={() => scroll("left")}
+					style={{
+						opacity: canScroll.left ? 1 : 0,
+						pointerEvents: canScroll.left ? "auto" : "none",
+					}}
+					className="absolute cursor-pointer left-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center p-4 bg-cyan-300/40 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-cyan-500 transition-all duration-300 shadow-xl"
+				>
+					<Icon icon="solar:alt-arrow-left-linear" width="28" />
+				</button>
+
+				{/* СТРЕЛКА НАДЯСНО */}
+				<button
+					onClick={() => scroll("right")}
+					style={{
+						opacity: canScroll.right ? 1 : 0,
+						pointerEvents: canScroll.right ? "auto" : "none",
+					}}
+					className="absolute cursor-pointer right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center p-4 bg-cyan-300/40 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-cyan-500 transition-all duration-300 shadow-xl"
+				>
+					<Icon icon="solar:alt-arrow-right-linear" width="28" />
+				</button>
+
+				{/* САМАТА ГАЛЕРИЯ */}
+				<motion.div
+					ref={scrollRef}
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.3 }}
+					className="
 				/* Мобилен - хоризонтален Слайдер */
-				flex overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 scrollbar-hide
+				flex md:grid overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 gallery-scroll-container no-scrollbar scrollbar-hide md:scrollbar-default
 				/* Десктоп */
-				md:grid md:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 md:gap-4 md:items-stretch
+				md:grid-flow-col md:grid-rows-[300px_300px] md:auto-cols-[22%] md:pb-20 md:mx-0 md:p-10 md:gap-4 md:items-stretch md:overflow-x-auto
 				"
-			>
-				{/* Голямо изображение */}
-				{mainItem && (
-					<motion.div
-						variants={itemVariants}
-						className="
-				/* Мобилен */
-				shrink-0 w-[85vw] snap-center min-h-[400px]
-				/* десктоп */
-				card-glass md:w-auto md:shrink md:col-span-2 md:row-span-2 relative group overflow-hidden border border-white/10 rounded-xl bg-white
-				"
-					>
-						<img
-							src={mainItem.src}
-							alt={mainItem.alt}
-							className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+				>
+					{/* Генериране на изображенията от масива */}
+					{GALLERY_ITEMS.map((img) => (
+						<motion.div
+							key={img.id}
+							layoutId={`img-${img.id}`} // плавен преход
+							onClick={() => setSelectedImg(img)}
+							className={`cursor-pointer shrink-0 snap-center relative group overflow-hidden border border-white/10 card-glass rounded-xl bg-white
+                                ${img.isMain ? "w-[85vw] min-h-[400px]" : "w-[70vw] aspect-square"}
+								md:w-full md:min-h-0
+								${img.isMain ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1"}
+								`}
+						>
+							<img
+								src={img.src}
+								className="w-full h-full object-contain p-4"
+								alt={img.alt}
+							/>
+							{img.title && (
+								<div className="absolute bottom-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+									{img.title}
+								</div>
+							)}
+						</motion.div>
+					))}
+				</motion.div>
+			</div>
+
+			{/* modal */}
+			<AnimatePresence>
+				{selectedImg && (
+					<div className="fixed 0 inset-0 z-[999] flex items-center justify-center p-4 md:p-10 lg:p-12 overflow-y-auto">
+						{/* Backdrop */}
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							onClick={() => setSelectedImg(null)}
+							className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
 						/>
-					</motion.div>
+						{/* Content Card */}
+						<motion.div
+							layoutId={`img-${selectedImg.id}`}
+							/* Фиксираме височината на 80% от екрана и забраняваме външния скрол */
+							className="relative w-full max-w-5xl bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:grid md:grid-cols-2 h-[85vh] md:h-[70vh]"
+						>
+							{/* ЛЯВА СТРАНА: Изображение - заема цялото пространство */}
+							<div className="relative bg-slate-50 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-100 h-1/2 md:h-full overflow-hidden">
+								<img
+									src={selectedImg.src}
+									alt={selectedImg.alt}
+									className="w-full h-full object-contain p-6 md:p-12 drop-shadow-xl"
+								/>
+							</div>
+
+							{/* ДЯСНА СТРАНА: Текст - СКРОЛАБЪЛ */}
+							<div className="flex flex-col h-1/2 md:h-full bg-white relative min-h-0">
+								{/* Бутон за затваряне - фиксиран горе вдясно на текста */}
+								<button
+									onClick={() => setSelectedImg(null)}
+									className="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-full transition-colors z-50 bg-white/80 backdrop-blur-sm"
+								>
+									<Icon
+										icon="solar:close-circle-linear"
+										width="28"
+										className="text-slate-400"
+									/>
+								</button>
+
+								{/* Скролираща зона за текста */}
+								<div className="p-8 md:p-12 overflow-y-auto custom-scrollbar h-full overscroll-contain">
+									<h3 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-4 pr-8">
+										{selectedImg.title || selectedImg.alt}
+									</h3>
+
+									<div className="w-12 h-1.5 bg-cyan-500 mb-8 rounded-full" />
+
+									<div className="prose prose-slate max-w-none">
+										<p className="text-slate-600 leading-relaxed text-lg mb-8">
+											{selectedImg.description}
+										</p>
+
+										{/* Тук можеш да добавиш още технически детайли, които ще се скролват */}
+										<div className="space-y-6">
+											<h4 className="font-bold text-slate-900 uppercase text-xs tracking-widest">
+												Technical Specs
+											</h4>
+											<ul className="space-y-3">
+												{[
+													"Nominal Voltage: 24V",
+													"Capacity: 234Ah",
+													"Configuration: 6s74p",
+													"Weight: 25kg",
+												].map((spec, i) => (
+													<li
+														key={i}
+														className="flex items-center gap-3 text-slate-500 text-sm border-b border-slate-50 pb-2"
+													>
+														<Icon
+															icon="solar:check-read-linear"
+															className="text-cyan-500"
+														/>
+														{spec}
+													</li>
+												))}
+											</ul>
+										</div>
+									</div>
+
+									{/* Фиксиран долен панел вътре в скрола за статус */}
+									<div className="sticky bottom-0 pt-10 mt-auto bg-gradient-to-t from-white via-white to-transparent">
+										<div className="grid grid-cols-2 gap-4">
+											<div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+												<p className="text-[10px] text-slate-400 uppercase font-black mb-1">
+													Grade
+												</p>
+												<p className="text-emerald-600 font-bold">
+													Automotive A+
+												</p>
+											</div>
+											<div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+												<p className="text-[10px] text-slate-400 uppercase font-black mb-1">
+													Stock
+												</p>
+												<p className="text-slate-700 font-bold">
+													Available
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</motion.div>
+					</div>
 				)}
-				{/* Всички останали изображеиния*/}
-				{otherItems.map((img) => (
-					<motion.div
-						key={img.id}
-						variants={itemVariants}
-						className="
-					/* Мобилен */
-					shrink-0 w-[80vw] snap-center aspect-square
-					/* desktop */
-					md:w-auto md:shrink md:aspect-square
-					relative card-glass group overflow-hidden border border-white/10 rounded-xl bg-white flex items-center justify-center p-6
-					"
-					>
-						<img
-							src={img.src}
-							alt={img.alt}
-							className="w-full h-full object-contain transition-transform duration-800 group-hover:scale-110"
-						/>
-					</motion.div>
-				))}
-			</motion.div>
+			</AnimatePresence>
 		</section>
 	);
 };
