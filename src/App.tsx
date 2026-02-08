@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import PowerStream from "./components/PowerStream";
 import Logistics from "./components/Logistics";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
