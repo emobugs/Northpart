@@ -1,0 +1,90 @@
+{
+	"nav": {
+		"products": "Inventory",
+		"logistics": "Logistics",
+		"gallery": "Gallery",
+		"contact": "Contact",
+		"inquire_btn": "Inquire Stock"
+	},
+	"hero": {
+		"badge": "Silistra Warehouse Operational",
+		"title_top": "High-Performance EV",
+		"title_bottom": "Hybrid Battery Systems",
+		"subtitle": "Europe's strategic B2B partner for high-voltage EV modules and LiFePO4 solutions",
+		"stock": "250+ units in stock",
+		"cta_inv": "View Inventory",
+		"cta_inq": "Wholesale Inquiry",
+		"stats": {
+			"sold": "Batteries SOLD",
+			"dispatch": "Dispatch",
+			"coverage": "Coverage"
+		},
+		"visual": {
+			"intel": "System Intelligence",
+			"monitoring": "Smart Monitoring & Modular Control",
+			"stock_status": "In Stock",
+			"capacity": "System Capacity"
+		}
+	},
+	"products": {
+		"title": "Product Categories",
+		"subtitle": "Engineered for reliability. Sourced for performance.",
+		"items": {
+			"ev": {
+				"title": "EV Battery Modules",
+				"desc": "Tier-1 high-voltage modules for major EV platforms. Rigorously tested for SOH (State of Health) and internal resistance to ensure OEM-level performance.",
+				"f1": "NMC & NCA Chemistry",
+				"f2": "400V - 800V Architecture"
+			},
+			"hybrid": {
+				"title": "Hybrid (HEV/PHEV) Systems",
+				"desc": "Specialized inventory of replacement packs for hybrid vehicles. We provide certified high-drain solutions for Toyota, Lexus, and European PHEV models.",
+				"f1": "NiMH & Li-ion Packs",
+				"f2": "Tested & Certified Grade A"
+			},
+			"lifepo4": {
+				"title": "LiFePO4 Industrial Cells",
+				"desc": "Safe, ultra-long-life Lithium Iron Phosphate solutions. Designed for high-cycle industrial applications, backup power, and heavy-duty machinery.",
+				"f1": "6000+ Charge Cycles",
+				"f2": "Superior Thermal Stability"
+			}
+		}
+	},
+
+	"logistics": {
+		"label": "Logistic Capability",
+		"title": "Strategic Gateway to Europe.",
+		"description": "Europe's premier B2B supplier for high-voltage EV modules and industrial power systems. Fast-track logistics and reliable delivery across the EU.",
+		"feature_title": "Pan-European Logistics",
+		"feature_desc": "Partnerships with major freight carriers for palletized delivery within 3-5 days.",
+		"hub": "SILISTRA, BG (HUB)"
+	},
+	"gallery": {
+		"title": "Gallery",
+		"view_details": "View Details",
+		"specs_label": "Technical Specs",
+		"grade_label": "Grade",
+		"stock_label": "Stock",
+		"available": "Available",
+		"automotive": "Automotive A+"
+	},
+	"contact": {
+		"title": "Contact Us",
+		"subtitle": "Direct wholesale pricing and technical support available upon inquiry.",
+		"labels": {
+			"email": "Email",
+			"technical": "Technical",
+			"sales": "Sales",
+			"first_name": "First Name",
+			"last_name": "Last Name",
+			"message": "Message"
+		},
+		"placeholders": {
+			"first": "John",
+			"last": "Doe",
+			"email": "john@example.com",
+			"message": "Your inquiry..."
+		},
+		"send_btn": "Send Enquiry"
+	}
+}

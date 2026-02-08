@@ -8,7 +8,10 @@ import Contact from "./components/Contact";
 import Products from "./components/Products";
 import "./index.css";
 import "./App.css";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import "./i18n";
 // Интерфейс за частиците в анимацията
 interface Star {
 	x: number;
@@ -17,8 +20,35 @@ interface Star {
 	opacity: number;
 }
 
+gsap.registerPlugin(ScrollTrigger);
+
 const App: React.FC = () => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+	{
+		/* gsap*/
+	}
+	const container = useRef(null);
+	useGSAP(
+		() => {
+			const sections = gsap.utils.toArray(".snap-section");
+
+			ScrollTrigger.create({
+				trigger: container.current,
+				start: "top top",
+				end: "bottom bottom",
+				snap: {
+					snapTo: 1 / (sections.length - 1), // Автоматично изчислява точките на спиране
+					duration: { min: 0.2, max: 0.8 }, // Колко бързо да „залепва“
+					delay: 0.0, // Малко изчакване преди снапа
+					ease: "power2.inOut", // Плавна крива на движение
+				},
+				fastScrollEnd: true,
+			});
+		},
+		{ scope: container },
+	);
+
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
@@ -70,24 +100,26 @@ const App: React.FC = () => {
 
 			<PowerStream />
 
-			<div className="relative z-10 flex flex-col min-h-screen">
-				<Navbar />
-				<Hero />
-				<Products />
-				<Logistics />
-				<Gallery />
-				<div id="line-end" className="absolute bottom-20 left-4 w-0 h-0"></div>
-				<Contact />
-
-				{/* Котва в самия край за финалната точка на линията */}
-				<footer className="relative">
-					<div id="pt-footer" className="absolute bottom-0 left-0 w-0 h-0"></div>
-					<div className="py-12 border-t border-white/5 bg-black/40 text-center">
-						<p className="text-[10px] text-slate-600 uppercase tracking-widest">
-							© 2026 NORTHPART LTD
-						</p>
+			<Navbar />
+			<div className="relative z-10 flex flex-col min-h-screen snap-y">
+				<main ref={container}>
+					<div className="snap-section">
+						<Hero />
 					</div>
-				</footer>
+					<div className="snap-section">
+						<Products />
+					</div>
+					<div className="snap-section">
+						<Logistics />
+					</div>
+					<div className="snap-section">
+						<Gallery />
+					</div>
+					<div className="snap-section">
+						<Contact />
+					</div>
+				</main>
+				{/* <div id="line-end" className="absolute bottom-20 left-4 w-0 h-0"></div> */}
 			</div>
 		</div>
 	);

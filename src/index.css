@@ -1,5 +1,24 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600&display=swap");
+/* index.css */
+html,
+body {
+	max-width: 100vw;
+	height: 100%;
+	margin: 0;
+	overflow-x: hidden; /* Това ще отреже всичко, което стърчи надясно */
+	scroll-behavior: smooth;
+}
+
+/* Скриване на скролбара на браузъра, за да е чист дизайна */
+::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	-ms-overflow-style: none; /* IE/Edge */
+	scrollbar-width: none; /* Firefox */
+}
 
 @layer base {
 	:root {
@@ -74,6 +93,37 @@
 	}
 }
 
+/* Scrollsnap */
+
+.snap-section {
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+	height: 100vh;
+	width: 100%;
+}
+
+/* В index.css върху главния контейнер */
+main {
+	scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+	height: 100vh;
+}
+
+.snap-section {
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+}
+
+.snap-start {
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+	height: 100vh; /* За по-стари браузъри */
+	height: 100dvh; /* За мобилни - игнорира адресната лента */
+}
+
+#contact {
+	scroll-margin-top: 100px;
+}
 /* Scrollbar */
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -111,13 +161,3 @@
 	height: 6px;
 	display: block !important;
 }
-
-/* .gallery-scroll-container::-webkit-scrollbar-track {
-	background: rgba(0, 0, 0, 0.05);
-	margin: 0 10%; /* Прави скролбара по-къс 
-}
-
-.gallery-scroll-container::-webkit-scrollbar-thumb {
-	background: #06b6d4; /* Cyan-500 
-	border-radius: 20px;
-} */

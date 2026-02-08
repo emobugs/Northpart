@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion, type Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // modula control slide in
 const visualContainerVariants: Variants = {
@@ -43,8 +44,10 @@ const itemVariants: Variants = {
 	},
 };
 
-const HeroVisual = ({ isMobile = false }) => (
-	<>
+const HeroVisual = ({ isMobile = false }) => {
+	const { t } = useTranslation();
+
+	return (
 		<motion.div
 			initial="hidden"
 			whileInView="visible"
@@ -65,10 +68,11 @@ const HeroVisual = ({ isMobile = false }) => (
 			{/* Heading */}
 			<div className="text-center mb-10 space-y-2">
 				<h3 className="text-cyan-600 font-mono text-xs font-bold tracking-[0.2em] uppercase">
-					System Intelligence
+					{t("hero.visual.intel")}
 				</h3>
 				<h2 className="text-2xl lg:text-3xl font-medium text-slate-900 tracking-tight">
-					Smart Monitoring & <br className="lg:hidden" /> Modular Control
+					{t("hero.visual.monitoring")}
+					<br className="lg:hidden" /> {t("hero.visual.stock_status")}
 				</h2>
 			</div>
 
@@ -107,7 +111,7 @@ const HeroVisual = ({ isMobile = false }) => (
 							icon="solar:server-square-linear"
 							className="text-slate-300"
 							width="32"
-						/>
+						/>{" "}
 						<span className="text-green-500 text-[10px] uppercase border border-green-900/50 bg-green-900/10 px-2 py-0.5 tracking-widest">
 							In Stock
 						</span>
@@ -122,15 +126,16 @@ const HeroVisual = ({ isMobile = false }) => (
 						></motion.div>
 					</div>
 					<div className="mt-2 text-xs font-mono text-slate-400">
-						System Capacity: 84%
+						{t("hero.visual.capacity")}: 84%
 					</div>
 				</motion.div>
 			</motion.div>
 		</motion.div>
-	</>
-);
+	);
+};
 
 const Hero: React.FC = () => {
+	const { t } = useTranslation();
 	return (
 		<>
 			<motion.section
@@ -149,25 +154,25 @@ const Hero: React.FC = () => {
 							className="inline-flex items-center gap-2 border border-cyan-900/30 bg-cyan-950/10 px-3 py-1 text-cyan-400 text-xs font-medium tracking-wide rounded-full"
 						>
 							<span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-							Silistra Warehouse Operational
+							{t("hero.badge")}
 						</motion.div>
 
 						<motion.h1
 							variants={itemVariants}
 							className="text-4xl lg:text-6xl font-medium tracking-tight heading-primary leading-[1.1]"
 						>
-							High-Performance EV <br />
-							<span className="tech-gradient-text">& Hybrid Battery Systems</span>
+							{t("hero.title_top")} <br />
+							<span className="tech-gradient-text">{t("hero.title_bottom")}</span>
 						</motion.h1>
 
 						<motion.p
 							variants={itemVariants}
 							className="text-lg text-slate-500 max-w-xl leading-relaxed"
 						>
-							Europe's strategic B2B partner for high-voltage EV modules and LiFePO4
-							solutions
+							{t("hero.subtitle")}
 							<span className="var(--text--primary) ml-2">
-								<br></br>250+ units in stock
+								<br></br>
+								{t("hero.stock")}
 							</span>
 						</motion.p>
 
@@ -182,7 +187,7 @@ const Hero: React.FC = () => {
 								href="#products"
 								className="flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-3.5 text-md font-medium transition-all shadow-[0_0_20px_-5px_rgba(8,145,178,0.4)]"
 							>
-								View Inventory{" "}
+								{t("hero.cta_inv")}{" "}
 								<Icon icon="solar:box-minimalistic-linear" width="18" />
 							</motion.a>
 							{/* Inquiry button */}
@@ -191,7 +196,7 @@ const Hero: React.FC = () => {
 								href="#contact"
 								className="flex items-center justify-center gap-3 border border-black/10 hover:border-black/30 text-black px-8 py-3.5 text-sm font-medium transition-all backdrop-blur-md bg-white/5"
 							>
-								Wholesale Inquiry{" "}
+								{t("hero.cta_inq")}{" "}
 								<Icon icon="solar:users-group-rounded-linear" width="18" />
 							</motion.a>
 						</motion.div>
@@ -201,9 +206,9 @@ const Hero: React.FC = () => {
 							className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5 text-center"
 						>
 							{[
-								{ val: "250+", lab: "Batteries SOLD" },
-								{ val: "24h", lab: "Dispatch" },
-								{ val: "EU", lab: "Coverage" },
+								{ val: "250+", lab: t("hero.stats.sold") },
+								{ val: "24h", lab: t("hero.stats.dispatch") },
+								{ val: "EU", lab: t("hero.stats.coverage") },
 							].map((stat, i) => (
 								<div key={i}>
 									<div className="text-2xl font-semibold text-black">
@@ -232,14 +237,6 @@ const Hero: React.FC = () => {
 				</div>
 			</motion.section>
 			{/* За мобилен */}
-			<motion.section
-				id="hero-mobile-visual"
-				className="lg:hidden h-screen w-full flex items-center justify-center px-6"
-			>
-				<div className="w-full flex justify-center">
-					<HeroVisual isMobile={true} />
-				</div>
-			</motion.section>
 		</>
 	);
 };

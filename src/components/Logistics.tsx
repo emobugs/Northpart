@@ -1,8 +1,10 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion, type Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const Logistics: React.FC = () => {
+	const { t } = useTranslation();
 	const logisticsContainerVariants: Variants = {
 		hidden: { opacity: 0 },
 		visible: {
@@ -39,7 +41,7 @@ const Logistics: React.FC = () => {
 						<div className="relative z-10 flex flex-col items-center">
 							<div className="w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_20px_2px_rgba(6,182,212,0.6)] animate-pulse"></div>
 							<div className="mt-4 px-4 py-2 bg-slate-900/90 backdrop-blur border border-white/10 text-xs text-white">
-								SILISTRA, BG (HUB)
+								{t("logistics.hub")}
 							</div>
 						</div>
 						<svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
@@ -84,7 +86,7 @@ const Logistics: React.FC = () => {
 					<div className="flex items-center gap-3 mb-6">
 						<div className="h-px w-8 bg-cyan-600"></div>
 						<span className="text-xs uppercase tracking-widest text-cyan-500 font-medium">
-							Logistic Capability
+							{t("logistics.label")}
 						</span>
 					</div>
 
@@ -93,14 +95,13 @@ const Logistics: React.FC = () => {
 						variants={itemVariants}
 						className="text-3xl lg:text-4xl font-medium text-black tracking-tight mb-6"
 					>
-						Strategic Gateway to Europe.
+						{t("logistics.title")}
 					</motion.h2>
 					<motion.p
 						variants={itemVariants}
 						className="text-slate-400 leading-relaxed mb-8"
 					>
-						Europe's premier B2B supplier for high-voltage EV modules and industrial
-						power systems. Fast-track logistics and reliable delivery across the EU.
+						{t("logistics.description")}
 					</motion.p>
 					<div className="space-y-6">
 						<motion.div variants={itemVariants} className="flex gap-4">
@@ -109,11 +110,10 @@ const Logistics: React.FC = () => {
 							</div>
 							<div>
 								<h4 className="text-black font-medium text-sm">
-									Pan-European Logistics
+									{t("logistics.feature_title")}
 								</h4>
 								<p className="text-sm text-slate-500 mt-1">
-									Partnerships with major freight carriers for palletized delivery
-									within 3-5 days.
+									{t("logistics.feature_desc")}
 								</p>
 							</div>
 						</motion.div>

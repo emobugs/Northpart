@@ -1,0 +1,89 @@
+{
+	"nav": {
+		"products": "Inventar",
+		"logistics": "Logistică",
+		"gallery": "Galerie",
+		"contact": "Contact",
+		"inquire_btn": "Cere ofertă"
+	},
+	"hero": {
+		"badge": "Depozitul Silistra este operațional",
+		"title_top": "Sisteme de baterii EV",
+		"title_bottom": "și hibride de înaltă performanță",
+		"subtitle": "Partenerul B2B strategic al Europei pentru module EV de înaltă tensiune și soluții LiFePO4",
+		"stock": "Peste 250 de unități în stoc",
+		"cta_inv": "Vezi stocul",
+		"cta_inq": "Cerere de gros",
+		"stats": {
+			"sold": "Baterii VÂNDUTE",
+			"dispatch": "Expediere",
+			"coverage": "Acoperire"
+		},
+		"visual": {
+			"intel": "Inteligența sistemului",
+			"monitoring": "Monitorizare inteligentă și control modular",
+			"stock_status": "În stoc",
+			"capacity": "Capacitatea sistemului"
+		}
+	},
+	"products": {
+		"title": "Categorii de Produse",
+		"subtitle": "Proiectate pentru fiabilitate. Selectate pentru performanță.",
+		"items": {
+			"ev": {
+				"title": "Module de Baterii EV",
+				"desc": "Module de înaltă tensiune Tier-1 pentru principalele platforme EV. Testate riguros pentru SOH și rezistență internă.",
+				"f1": "Chimie NMC și NCA",
+				"f2": "Arhitectură 400V - 800V"
+			},
+			"hybrid": {
+				"title": "Sisteme Hibride (HEV/PHEV)",
+				"desc": "Inventar specializat de pachete de schimb pentru vehicule hibride. Soluții certificate pentru modele Toyota, Lexus și PHEV europene.",
+				"f1": "Pachete NiMH și Li-ion",
+				"f2": "Testate și Certificate - Grad A"
+			},
+			"lifepo4": {
+				"title": "Celule Industriale LiFePO4",
+				"desc": "Soluții LiFePO4 sigure, cu durată de viață ultra-lungă. Proiectate pentru aplicații industriale și utilaje grele.",
+				"f1": "Peste 6000 de cicluri",
+				"f2": "Stabilitate termică superioară"
+			}
+		}
+	},
+	"logistics": {
+		"label": "Capabilitate logistică",
+		"title": "Poarta strategică către Europa.",
+		"description": "Principalul furnizor B2B din Europa pentru module EV de înaltă tensiune și sisteme de alimentare industriale. Logistică rapidă și livrare fiabilă în întreaga UE.",
+		"feature_title": "Logistică pan-europeană",
+		"feature_desc": "Parteneriate cu mari transportatori de marfă pentru livrare paletizată în termen de 3-5 zile.",
+		"hub": "SILISTRA, BG (HUB)"
+	},
+	"gallery": {
+		"title": "Galerie",
+		"view_details": "Vezi detalii",
+		"specs_label": "Specificații tehnice",
+		"grade_label": "Grad",
+		"stock_label": "Stoc",
+		"available": "Disponibil",
+		"automotive": "Automotive A+"
+	},
+	"contact": {
+		"title": "Contactați-ne",
+		"subtitle": "Prețuri directe de gros și suport tehnic disponibil la cerere.",
+		"labels": {
+			"email": "E-mail",
+			"technical": "Tehnic",
+			"sales": "Vânzări",
+			"first_name": "Prenume",
+			"last_name": "Nume",
+			"message": "Mesaj"
+		},
+		"placeholders": {
+			"first": "Andrei",
+			"last": "Ionescu",
+			"email": "andrei@exemplu.ro",
+			"message": "Cererea dumneavoastră..."
+		},
+		"send_btn": "Trimite Cererea"
+	}
+}

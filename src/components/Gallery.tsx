@@ -2,8 +2,11 @@ import { useEffect, useState, useRef } from "react";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { GALLERY_ITEMS } from "../constants/galleryData";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
 
 const Gallery: React.FC = () => {
+	const { t, i18n } = useTranslation();
+	const currentLang = i18n.language as "en" | "bg" | "de" | "ro";
 	{
 		/*Init scroll control and function */
 	}
@@ -81,16 +84,22 @@ const Gallery: React.FC = () => {
 		},
 	};
 	return (
-		<section id="gallery" className="p-24 px-6 relative z-10 overflow-x-hidden">
+		<section
+			id="gallery"
+			className="p-10 px-6 justify-center relative z-10 overflow-x-hidden h-screen w-full snap-start"
+		>
+			<div className="h-15 md:h-28 flex-shrink-0 md:hidden" />
 			{/* Heading */}
 			<div className="max-w-7xl mx-auto px-6 relative">
 				<div className="flex justify-between items-end mb-12">
-					<h2 className="heading-primary text-3xl font-medium tracking-tight">Gallery</h2>
+					<h2 className="heading-primary text-3xl font-medium tracking-tight pt-10">
+						{t("gallery.title")}
+					</h2>
 				</div>
 			</div>
 
 			{/* Стрелки */}
-			<div className="relative max-w-7xl mx-auto px-6 group">
+			<div className="relative flex-1 max-w-7xl mx-auto px-6 group">
 				{/* СТРЕЛКА НАЛЯВО */}
 				<button
 					onClick={() => scroll("left")}
@@ -124,33 +133,37 @@ const Gallery: React.FC = () => {
 					viewport={{ once: true, amount: 0.3 }}
 					className="
 				/* Мобилен - хоризонтален Слайдер */
-				flex md:grid overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 gallery-scroll-container no-scrollbar scrollbar-hide md:scrollbar-default
+				flex md:grid overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 no-scrollbar
 				/* Десктоп */
 				md:grid-flow-col md:grid-rows-[300px_300px] md:auto-cols-[22%] md:pb-20 md:mx-0 md:p-10 md:gap-4 md:items-stretch md:overflow-x-auto
 				"
 				>
 					{/* Генериране на изображенията от масива */}
-					{GALLERY_ITEMS.map((img) => (
+					{GALLERY_ITEMS.map((item) => (
 						<motion.div
-							key={img.id}
-							layoutId={`img-${img.id}`} // плавен преход
-							onClick={() => setSelectedImg(img)}
+							key={item.id}
+							layoutId={`img-${item.id}`} // плавен преход
+							onClick={() => setSelectedImg(item)}
 							className={`cursor-pointer shrink-0 snap-center relative group overflow-hidden border border-white/10 card-glass rounded-xl bg-white
-                                ${img.isMain ? "w-[85vw] min-h-[400px]" : "w-[70vw] aspect-square"}
+                                ${item.isMain ? "w-[85vw] min-h-[400px]" : "w-[70vw] aspect-square"}
 								md:w-full md:min-h-0
-								${img.isMain ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1"}
+								${item.isMain ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1"}
 								`}
 						>
 							<img
-								src={img.src}
+								src={item.src}
 								className="w-full h-full object-contain p-4"
-								alt={img.alt}
+								alt={item.alt}
 							/>
-							{img.title && (
-								<div className="absolute bottom-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-									{img.title}
+							<div className="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+								<h3 className="text-xl font-medium text-black mb-2">
+									{item.translations[currentLang]?.title}
+								</h3>
+								<div className="flex items-center gap-2 text-cyan-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+									<span>{t("gallery.view_details")}</span>
+									<Icon icon="solar:arrow-right-linear" />
 								</div>
-							)}
+							</div>
 						</motion.div>
 					))}
 				</motion.div>
@@ -200,20 +213,20 @@ const Gallery: React.FC = () => {
 								{/* Скролираща зона за текста */}
 								<div className="p-8 md:p-12 overflow-y-auto custom-scrollbar h-full overscroll-contain">
 									<h3 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-4 pr-8">
-										{selectedImg.title || selectedImg.alt}
+										{selectedImg.translations[currentLang]?.title}
 									</h3>
 
 									<div className="w-12 h-1.5 bg-cyan-500 mb-8 rounded-full" />
 
 									<div className="prose prose-slate max-w-none">
 										<p className="text-slate-600 leading-relaxed text-lg mb-8">
-											{selectedImg.description}
+											{selectedImg.translations[currentLang]?.desc}
 										</p>
 
 										{/* Тук можеш да добавиш още технически детайли, които ще се скролват */}
 										<div className="space-y-6">
 											<h4 className="font-bold text-slate-900 uppercase text-xs tracking-widest">
-												Technical Specs
+												{t("gallery.specs_label")}
 											</h4>
 											<ul className="space-y-3">
 												{[
@@ -242,18 +255,18 @@ const Gallery: React.FC = () => {
 										<div className="grid grid-cols-2 gap-4">
 											<div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
 												<p className="text-[10px] text-slate-400 uppercase font-black mb-1">
-													Grade
+													{t("gallery.grade_label")}
 												</p>
 												<p className="text-emerald-600 font-bold">
-													Automotive A+
+													{t("gallery.automotive")}
 												</p>
 											</div>
 											<div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
 												<p className="text-[10px] text-slate-400 uppercase font-black mb-1">
-													Stock
+													{t("gallery.stock_label")}
 												</p>
 												<p className="text-slate-700 font-bold">
-													Available
+													{t("gallery.available")}
 												</p>
 											</div>
 										</div>

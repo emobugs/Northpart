@@ -1,8 +1,10 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion, type Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const Contact: React.FC = () => {
+	const { t } = useTranslation();
 	const containerVariants: Variants = {
 		hidden: { opacity: 0 },
 		visible: {
@@ -23,49 +25,49 @@ const Contact: React.FC = () => {
 	return (
 		<section
 			id="contact"
-			className="min-h-screen flex items-center py-16 px-6 border-t border-white/5 relative z-10 bg-white"
+			className="h-screen snap-start flex items-center py-16 px-6 border-t border-white/5 relative z-10 bg-white"
 		>
+			{/* <div className="h-20 md:h-28 flex-shrink-0" /> */}
 			<div className="max-w-7xl mx-auto w-full relative">
 				<motion.div
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.2 }}
 					variants={containerVariants}
-					className="grid lg:grid-cols-2 gap-5 items-start"
+					className="grid lg:grid-cols-2 gap-0 items-start"
 				>
 					{/* ЛЯВА КОЛОНА: ИНФОРМАЦИЯ */}
-					<div className="space-y-8">
+					<div className="space-y-3">
 						<motion.div variants={itemVariants}>
 							<h2 className="text-3xl md:text-4xl font-medium heading-primary tracking-tight mb-3">
-								Contact Us
+								{t("contact.title")}
 							</h2>
 							<p className="text-slate-500 text-sm md:text-base max-w-md leading-relaxed">
-								Direct wholesale pricing and technical support available upon
-								inquiry.
+								<p>{t("contact.subtitle")}</p>
 							</p>
 						</motion.div>
 
 						{/* Компактни контакти - на мобилен са един до друг/под друг с малки икони */}
-						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-1">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-0">
 							{[
 								{
 									href: "mailto:northpartbg@gmail.com",
 									icon: "solar:letter-linear",
-									label: "Email",
+									label: t("contact.labels.email"),
 									val: "northpartbg@gmail.com",
 									color: "cyan",
 								},
 								{
 									href: "https://wa.me/359892787845",
 									icon: "logos:whatsapp-icon",
-									label: "Technical",
+									label: t("contact.labels.technical"),
 									val: "+359892787845",
 									color: "green",
 								},
 								{
 									href: "https://wa.me/4745021323",
 									icon: "logos:whatsapp-icon",
-									label: "Sales",
+									label: t("contact.labels.sales"),
 									val: "+4745021323",
 									color: "green",
 								},
@@ -106,53 +108,53 @@ const Contact: React.FC = () => {
 							<div className="grid grid-cols-2 gap-4">
 								<div className="space-y-1">
 									<label className="text-[10px] uppercase tracking-widest text-slate-400 font-bold ml-1">
-										First Name
+										{t("contact.labels.first_name")}
 									</label>
 									<input
 										type="text"
 										className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-cyan-500 transition-colors"
-										placeholder="John"
+										placeholder={t("contact.placeholders.first")}
 									/>
 								</div>
 								<div className="space-y-1">
 									<label className="text-[10px] uppercase tracking-widest text-slate-400 font-bold ml-1">
-										Last Name
+										{t("contact.labels.last_name")}
 									</label>
 									<input
 										type="text"
 										className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-cyan-500 transition-colors"
-										placeholder="Doe"
+										placeholder={t("contact.placeholders.last")}
 									/>
 								</div>
 							</div>
 
 							<div className="space-y-1">
 								<label className="text-[10px] uppercase tracking-widest text-slate-400 font-bold ml-1">
-									Email
+									{t("contact.labels.email")}
 								</label>
 								<input
 									type="email"
 									className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-cyan-500 transition-colors"
-									placeholder="john@example.com"
+									placeholder={t("contact.placeholders.email")}
 								/>
 							</div>
 
 							<div className="space-y-1">
 								<label className="text-[10px] uppercase tracking-widest text-slate-400 font-bold ml-1">
-									Message
+									{t("contact.labels.message")}
 								</label>
 								<textarea
 									className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-cyan-500 min-h-[80px] transition-colors resize-none"
-									placeholder="Your inquiry..."
+									placeholder={t("contact.placeholders.message")}
 								></textarea>
 							</div>
 
 							<motion.button
 								whileHover={{ scale: 1.01 }}
 								whileTap={{ scale: 0.99 }}
-								className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl uppercase tracking-widest text-xs hover:bg-cyan-600 transition-all shadow-lg"
+								className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl uppercase tracking-widest text-xs hover:bg-cyan-600 transition-all shadow-lg cursor-pointer"
 							>
-								Send Enquiry
+								{t("contact.send_btn")}
 							</motion.button>
 						</form>
 					</motion.div>
