@@ -3,14 +3,6 @@ import { Icon } from "@iconify/react";
 import { motion, type Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-interface Category {
-	title: string;
-	icon: string;
-	desc: string;
-	features: string[];
-	span?: string;
-}
-
 const Products: React.FC = () => {
 	const { t } = useTranslation();
 	const categories = [

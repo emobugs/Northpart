@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
-import { GALLERY_ITEMS } from "../constants/galleryData";
+import { GALLERY_ITEMS, type GalleryItem } from "../constants/galleryData";
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
 
@@ -75,14 +75,7 @@ const Gallery: React.FC = () => {
 			},
 		},
 	};
-	const itemVariants: Variants = {
-		hidden: { opacity: 0, y: 20 },
-		visible: {
-			opacity: 1,
-			y: 0,
-			transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-		},
-	};
+
 	return (
 		<section
 			id="gallery"

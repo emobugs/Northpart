@@ -4,22 +4,6 @@ import { motion, type Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 // modula control slide in
-const visualContainerVariants: Variants = {
-	hidden: {
-		opacity: 0,
-		y: 40,
-		scale: 0.95,
-	},
-	visible: {
-		opacity: 1,
-		y: 0,
-		scale: 1,
-		transition: {
-			duration: 1,
-			ease: [0.16, 1, 0.3, 1],
-		},
-	},
-};
 
 const heroContainerVariants: Variants = {
 	hidden: { opacity: 0 },

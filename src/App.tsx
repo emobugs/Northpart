@@ -98,7 +98,7 @@ const App: React.FC = () => {
 			{/* Котва в самото начало */}
 			<div id="pt-nav" className="absolute top-0 left-0 w-0 h-0"></div>
 
-			<PowerStream />
+			{/* <PowerStream /> */}
 
 			<Navbar />
 			<div className="relative z-10 flex flex-col min-h-screen snap-y">
