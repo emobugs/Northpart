@@ -22,8 +22,6 @@ interface Star {
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
-	const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
 	{
 		/* gsap*/
 	}
@@ -47,50 +45,6 @@ const App: React.FC = () => {
 		},
 		{ scope: container },
 	);
-
-	useEffect(() => {
-		const canvas = canvasRef.current;
-		if (!canvas) return;
-		const ctx = canvas.getContext("2d");
-		if (!ctx) return;
-
-		let animationId: number;
-
-		const resize = () => {
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-		};
-
-		window.addEventListener("resize", resize);
-		resize();
-
-		const stars: Star[] = Array.from({ length: 120 }, () => ({
-			x: Math.random() * canvas.width,
-			y: Math.random() * canvas.height,
-			size: Math.random() * 1.5,
-			opacity: Math.random(),
-		}));
-
-		const animate = () => {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			stars.forEach((star) => {
-				ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-				ctx.beginPath();
-				ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-				ctx.fill();
-				star.opacity += (Math.random() - 0.5) * 0.05;
-				if (star.opacity < 0) star.opacity = 0;
-				if (star.opacity > 0.8) star.opacity = 0.8;
-			});
-			animationId = requestAnimationFrame(animate);
-		};
-
-		animate();
-		return () => {
-			window.removeEventListener("resize", resize);
-			cancelAnimationFrame(animationId);
-		};
-	}, []);
 
 	return (
 		<div className="relative min-h-screen scroll-container">

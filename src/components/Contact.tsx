@@ -89,12 +89,12 @@ const Contact: React.FC = () => {
 								<motion.div
 									key={i}
 									variants={itemVariants}
-									className="grid grid-cols-[60px_1fr] md:grid-cols-[1fr-auto] lg:grid-cols-[1fr-auto] items-center gap-3 group p-3 rounded-xl hover:bg-slate-50 transition-colors"
+									className="grid grid-cols-[60px_1fr] md:grid-cols-[1fr-auto] lg:grid-cols-[1fr-auto] items-center gap-5 group p-3 rounded-xl hover:bg-slate-50 transition-colors"
 								>
 									<h4 className="text-slate-400 text-[9px] uppercase tracking-widest font-bold leading-none mb-1">
 										{item.label}
 									</h4>
-									<div className="grid grid-cols-[1fr_1fr] items-center justify-center w-full md:w-auto">
+									<div className="grid grid-cols-[1fr_1fr] items-center gap-2 justify-center w-full md:w-auto">
 										<span className="text-slate-700 font-medium text-sm">
 											{item.val}
 										</span>

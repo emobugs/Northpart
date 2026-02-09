@@ -128,14 +128,13 @@ const Hero: React.FC = () => {
 				initial="hidden"
 				animate="visible"
 				viewport={{ once: false, amount: 0.3 }}
-				className="h-screen w-full flex items-center px-2 relative pt-30"
+				className="h-screen w-full flex items-center px-8 relative pt-10"
 			>
-				<div id="line-start" className="absolute top-1/2 left-4 w-0 h-0"></div>
 				<div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center wide-full relative z-10">
 					<div className="space-y-8">
 						<motion.div
 							variants={itemVariants}
-							className="inline-flex items-center gap-2 border border-cyan-900/30 bg-cyan-950/10 px-3 py-1 text-cyan-400 text-xs font-medium tracking-wide rounded-full"
+							className="md:inline-flex items-center hidden gap-2 border border-cyan-900/30 bg-cyan-950/10 px-3 py-1 text-cyan-400 text-xs font-medium tracking-wide rounded-full"
 						>
 							<span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
 							{t("hero.badge")}
@@ -186,7 +185,7 @@ const Hero: React.FC = () => {
 
 						<motion.div
 							variants={itemVariants}
-							className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5 text-center"
+							className="grid grid-cols-3 gap-4 pt-8 border-t border-white/5 text-center"
 						>
 							{[
 								{ val: "250+", lab: t("hero.stock") },

@@ -79,17 +79,16 @@ const Gallery: React.FC = () => {
 	return (
 		<section
 			id="gallery"
-			className="p-10 px-6 justify-center relative z-10 overflow-x-hidden h-screen w-full snap-start"
+			className="py-8 pt-20 justify-center relative z-10 overflow-x-hidden h-screen w-full snap-start"
 		>
 			<div className="h-15 md:h-28 flex-shrink-0 md:hidden" />
 			{/* Heading */}
 			<div className="max-w-7xl mx-auto px-6 relative">
 				<div className="flex justify-between items-end">
-					<h2 className="heading-primary text-3xl font-medium tracking-tight py-4 lg:pt-20">
+					<h2 className="heading-primary text-3xl font-medium tracking-tight py-6 lg:pl-10 lg:pt-20">
 						{t("gallery.title")}
 					</h2>
 				</div>
-				{/* <p className="text-slate-400 leading-relaxed mb-4">Разгледайте нашата галерията</p> */}
 			</div>
 
 			{/* Стрелки */}
@@ -101,7 +100,7 @@ const Gallery: React.FC = () => {
 						opacity: canScroll.left ? 1 : 0,
 						pointerEvents: canScroll.left ? "auto" : "none",
 					}}
-					className="absolute cursor-pointer left-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center p-4 bg-cyan-300/40 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-cyan-500 transition-all duration-300 shadow-xl"
+					className="absolute cursor-pointer left-0 top-1/2 -translate-y-1/2 z-30  md:flex items-center justify-center p-4 bg-cyan-300/20 md:bg-cyan-300/40 backdrop-blur-md border border-white/20 rounded-full text-white md:hover:bg-cyan-500/60 transition-all duration-300 shadow-xl"
 				>
 					<Icon icon="solar:alt-arrow-left-linear" width="28" />
 				</button>
@@ -113,7 +112,7 @@ const Gallery: React.FC = () => {
 						opacity: canScroll.right ? 1 : 0,
 						pointerEvents: canScroll.right ? "auto" : "none",
 					}}
-					className="absolute cursor-pointer right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center p-4 bg-cyan-300/40 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-cyan-500 transition-all duration-300 shadow-xl"
+					className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 z-30  md:flex items-center justify-center p-4 bg-cyan-300/20 md:bg-cyan-300/40 backdrop-blur-md border border-white/20 rounded-full text-white md:hover:bg-cyan-500/60 transition-all duration-300 shadow-xl"
 				>
 					<Icon icon="solar:alt-arrow-right-linear" width="28" />
 				</button>
@@ -127,7 +126,7 @@ const Gallery: React.FC = () => {
 					viewport={{ once: true, amount: 0.3 }}
 					className="
 				/* Мобилен - хоризонтален Слайдер */
-				flex md:grid overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 no-scrollbar
+				flex md:grid overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 no-scrollbar 
 				/* Десктоп */
 				md:grid-flow-col md:grid-rows-[300px_300px] md:auto-cols-[22%] md:mx-0 md:p-10 md:gap-4 md:items-stretch md:overflow-x-auto
 				"
@@ -138,22 +137,25 @@ const Gallery: React.FC = () => {
 							key={item.id}
 							layoutId={`img-${item.id}`} // плавен преход
 							onClick={() => setSelectedImg(item)}
-							className={`cursor-pointer shrink-0 snap-center relative group overflow-hidden border border-white/10 card-glass rounded-xl bg-white
-                                ${item.isMain ? "w-[85vw] min-h-[400px]" : "w-[70vw] aspect-square"}
+							className={`flex flex-col justify-content:space-around  shrink-0 snap-center relative group overflow-hidden border border-white/10 card-glass rounded-xl cursor-pointer
+
+                                ${item.isMain ? "w-[85vw] min-h-[400px]" : "w-[80vw] aspect-square"}
 								md:w-full md:min-h-0
 								${item.isMain ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1"}
 								`}
 						>
 							<img
 								src={item.src}
-								className="w-full h-full object-contain p-4"
-								alt={item.alt}
+								className="w-full h-full object-cover"
+								alt={item.translations[currentLang]?.title}
 							/>
-							<div className="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 hover:translate-y-0 transition-transform duration-500">
-								<h3 className="text-md font-medium text-black mb-2 text-center">
+							{/* <div className=" pb-2 z-20 translate-y-2 hover:translate-y-0 transition-transform duration-500"> */}
+							<div className="flex p-4 items-center justify-center h-[80px] text-center">
+								<h3 className="text-md  md:text-base font-medium text-black mb-2 text-slate-800 leading-tight">
 									{item.translations[currentLang]?.title}
 								</h3>
 							</div>
+							{/* </div> */}
 						</motion.div>
 					))}
 				</motion.div>
@@ -191,7 +193,7 @@ const Gallery: React.FC = () => {
 								{/* Бутон за затваряне - фиксиран горе вдясно на текста */}
 								<button
 									onClick={() => setSelectedImg(null)}
-									className="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-full transition-colors z-50 bg-white/80 backdrop-blur-sm"
+									className="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-full transition-colors z-50 bg-white/80 backdrop-blur-sm cursor-pointer"
 								>
 									<Icon
 										icon="solar:close-circle-linear"
@@ -202,7 +204,7 @@ const Gallery: React.FC = () => {
 
 								{/* Скролираща зона за текста */}
 								<div className="p-8 md:p-12 overflow-y-auto custom-scrollbar h-full overscroll-contain">
-									<h3 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-4 pr-8">
+									<h3 className="text-lg md:text-3xl font-semibold text-slate-900 mb-4 pr-8">
 										{selectedImg.translations[currentLang]?.title}
 									</h3>
 
@@ -212,36 +214,10 @@ const Gallery: React.FC = () => {
 										<p className="text-slate-600 leading-relaxed text-lg mb-8">
 											{selectedImg.translations[currentLang]?.desc}
 										</p>
-
-										{/* Тук можеш да добавиш още технически детайли, които ще се скролват */}
-										<div className="space-y-6">
-											<h4 className="font-bold text-slate-900 uppercase text-xs tracking-widest">
-												{t("gallery.specs_label")}
-											</h4>
-											<ul className="space-y-3">
-												{[
-													"Nominal Voltage: 24V",
-													"Capacity: 234Ah",
-													"Configuration: 6s74p",
-													"Weight: 25kg",
-												].map((spec, i) => (
-													<li
-														key={i}
-														className="flex items-center gap-3 text-slate-500 text-sm border-b border-slate-50 pb-2"
-													>
-														<Icon
-															icon="solar:check-read-linear"
-															className="text-cyan-500"
-														/>
-														{spec}
-													</li>
-												))}
-											</ul>
-										</div>
 									</div>
 
 									{/* Фиксиран долен панел вътре в скрола за статус */}
-									<div className="sticky bottom-0 pt-10 mt-auto bg-gradient-to-t from-white via-white to-transparent">
+									{/* <div className="sticky bottom-0 pt-10 mt-auto bg-gradient-to-t from-white via-white to-transparent">
 										<div className="grid grid-cols-2 gap-4">
 											<div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
 												<p className="text-[10px] text-slate-400 uppercase font-black mb-1">
@@ -260,7 +236,7 @@ const Gallery: React.FC = () => {
 												</p>
 											</div>
 										</div>
-									</div>
+									</div> */}
 								</div>
 							</div>
 						</motion.div>

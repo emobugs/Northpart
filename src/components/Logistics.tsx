@@ -31,7 +31,7 @@ const Logistics: React.FC = () => {
 	return (
 		<section
 			id="logistics"
-			className="py-24 px-6 border-y border-white/5  relative z-10 glass-panel"
+			className="py-36 px-6 border-y border-white/5  relative z-10 glass-panel"
 		>
 			<div id="line-logistics" className="absolute top-90 right-80 w-0 h-0"></div>
 			<div className="mx-auto grid lg:grid-cols-2 gap-16 items-center relative">
@@ -79,7 +79,7 @@ const Logistics: React.FC = () => {
 				<motion.div
 					initial="hidden"
 					whileInView="visible"
-					viewport={{ once: true, amount: 0.6 }}
+					viewport={{ once: false, amount: 0.6 }}
 					variants={logisticsContainerVariants}
 					className="order-1 lg:order-2"
 				>
