@@ -139,4 +139,28 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 			},
 		},
 	},
+	{
+		id: 6,
+		src: cylinder,
+		alt: "Cylindrical Cells",
+		specs: ["21700 Format", "NMC Chemistry", "High Discharge"],
+		translations: {
+			en: {
+				title: "21700 Cylindrical Cells",
+				desc: "High-drain cylindrical cells used in modern long-range electric vehicle architectures.",
+			},
+			bg: {
+				title: "21700 Цилиндрични клетки",
+				desc: "Цилиндрични клетки с висок разряд, използвани в модерните архитектури на електромобили.",
+			},
+			de: {
+				title: "21700 Zylindrische Zellen",
+				desc: "Hochstromfähige Rundzellen, die в modernen Elektrofahrzeug-Architekturen verwendet werden.",
+			},
+			ro: {
+				title: "Celule cilindrice 21700",
+				desc: "Celule cilindrice cu descărcare mare utilizate în arhitecturile moderne ale vehiculelor electrice.",
+			},
+		},
+	},
 ];

@@ -84,11 +84,12 @@ const Gallery: React.FC = () => {
 			<div className="h-15 md:h-28 flex-shrink-0 md:hidden" />
 			{/* Heading */}
 			<div className="max-w-7xl mx-auto px-6 relative">
-				<div className="flex justify-between items-end mb-12">
-					<h2 className="heading-primary text-3xl font-medium tracking-tight pt-10">
+				<div className="flex justify-between items-end">
+					<h2 className="heading-primary text-3xl font-medium tracking-tight py-4 lg:pt-20">
 						{t("gallery.title")}
 					</h2>
 				</div>
+				{/* <p className="text-slate-400 leading-relaxed mb-4">Разгледайте нашата галерията</p> */}
 			</div>
 
 			{/* Стрелки */}
@@ -128,7 +129,7 @@ const Gallery: React.FC = () => {
 				/* Мобилен - хоризонтален Слайдер */
 				flex md:grid overflow-x-auto snap-x snap-mandatory gap-4 pb-10 -mx-6 px-6 no-scrollbar
 				/* Десктоп */
-				md:grid-flow-col md:grid-rows-[300px_300px] md:auto-cols-[22%] md:pb-20 md:mx-0 md:p-10 md:gap-4 md:items-stretch md:overflow-x-auto
+				md:grid-flow-col md:grid-rows-[300px_300px] md:auto-cols-[22%] md:mx-0 md:p-10 md:gap-4 md:items-stretch md:overflow-x-auto
 				"
 				>
 					{/* Генериране на изображенията от масива */}
@@ -148,14 +149,10 @@ const Gallery: React.FC = () => {
 								className="w-full h-full object-contain p-4"
 								alt={item.alt}
 							/>
-							<div className="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-								<h3 className="text-xl font-medium text-black mb-2">
+							<div className="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 hover:translate-y-0 transition-transform duration-500">
+								<h3 className="text-md font-medium text-black mb-2 text-center">
 									{item.translations[currentLang]?.title}
 								</h3>
-								<div className="flex items-center gap-2 text-cyan-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-									<span>{t("gallery.view_details")}</span>
-									<Icon icon="solar:arrow-right-linear" />
-								</div>
 							</div>
 						</motion.div>
 					))}

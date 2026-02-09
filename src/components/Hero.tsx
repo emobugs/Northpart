@@ -22,7 +22,7 @@ const itemVariants: Variants = {
 		opacity: 1,
 		x: 0,
 		transition: {
-			duration: 1.4,
+			duration: 1,
 			ease: [0.16, 1, 0.3, 1], // Супер плавно спиране
 		},
 	},
@@ -127,8 +127,8 @@ const Hero: React.FC = () => {
 				variants={heroContainerVariants}
 				initial="hidden"
 				animate="visible"
-				viewport={{ once: true, amount: 0.3 }}
-				className="h-screen w-full flex items-center px-2 relative border-b"
+				viewport={{ once: false, amount: 0.3 }}
+				className="h-screen w-full flex items-center px-2 relative pt-30"
 			>
 				<div id="line-start" className="absolute top-1/2 left-4 w-0 h-0"></div>
 				<div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center wide-full relative z-10">
@@ -156,7 +156,7 @@ const Hero: React.FC = () => {
 							{t("hero.subtitle")}
 							<span className="var(--text--primary) ml-2">
 								<br></br>
-								{t("hero.stock")}
+								{/* {t("hero.stock")} */}
 							</span>
 						</motion.p>
 
@@ -166,19 +166,18 @@ const Hero: React.FC = () => {
 						>
 							{/* View inventory button */}
 							<motion.a
-								whileHover={{ scale: 1.02 }}
+								whileHover={{ scale: 1.02, borderRadius: "5px" }}
 								whileTap={{ scale: 0.98 }}
 								href="#products"
-								className="flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-3.5 text-md font-medium transition-all shadow-[0_0_20px_-5px_rgba(8,145,178,0.4)]"
+								className="flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-3.5 text-md font-medium transition-all-200 shadow-[0_0_20px_-5px_rgba(8,145,178,0.4)]"
 							>
 								{t("hero.cta_inv")}{" "}
 								<Icon icon="solar:box-minimalistic-linear" width="18" />
 							</motion.a>
 							{/* Inquiry button */}
 							<motion.a
-								whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
 								href="#contact"
-								className="flex items-center justify-center gap-3 border border-black/10 hover:border-black/30 text-black px-8 py-3.5 text-sm font-medium transition-all backdrop-blur-md bg-white/5"
+								className="flex items-center justify-center gap-3 border border-black/10 hover:border-cyan-400 text-black px-8 py-3.5 text-sm font-medium transition-all-400 backdrop-blur-lg bg-white/5"
 							>
 								{t("hero.cta_inq")}{" "}
 								<Icon icon="solar:users-group-rounded-linear" width="18" />
@@ -190,7 +189,7 @@ const Hero: React.FC = () => {
 							className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5 text-center"
 						>
 							{[
-								{ val: "250+", lab: t("hero.stats.sold") },
+								{ val: "250+", lab: t("hero.stock") },
 								{ val: "24h", lab: t("hero.stats.dispatch") },
 								{ val: "EU", lab: t("hero.stats.coverage") },
 							].map((stat, i) => (

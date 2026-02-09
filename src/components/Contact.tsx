@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
 	return (
 		<section
 			id="contact"
-			className="h-screen snap-start flex items-center py-16 px-6 border-t border-white/5 relative z-10 bg-white"
+			className="h-screen snap-start flex items-center px-6 border-t border-white/5 relative z-10 bg-white"
 		>
 			<div className="max-w-7xl mx-auto w-full relative">
 				<motion.div
@@ -80,9 +80,6 @@ const Contact: React.FC = () => {
 							<h2 className="text-3xl md:text-4xl font-medium heading-primary tracking-tight mb-3">
 								{t("contact.title")}
 							</h2>
-							<p className="text-slate-500 text-sm md:text-base max-w-md leading-relaxed">
-								<p>{t("contact.subtitle")}</p>
-							</p>
 						</motion.div>
 
 						{/* Контактни данни */}

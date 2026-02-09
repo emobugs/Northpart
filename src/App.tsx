@@ -118,7 +118,6 @@ const App: React.FC = () => {
 						<Contact />
 					</div>
 				</main>
-				{/* <div id="line-end" className="absolute bottom-20 left-4 w-0 h-0"></div> */}
 			</div>
 		</div>
 	);
