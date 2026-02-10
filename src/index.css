@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 /* index.css */
 html,
 body {
@@ -12,6 +13,10 @@ body {
 /* Скриване на скролбара на браузъра, за да е чист дизайна */
 ::-webkit-scrollbar {
 	display: none;
+}
+
+.logo {
+	height: 30px;
 }
 
 * {
@@ -36,6 +41,10 @@ body {
 		font-family: "Inter", sans-serif;
 		max-width: 100vw;
 		overflow-x: hidden;
+	}
+
+	h1 {
+		opacity: 1 !important;
 	}
 }
 

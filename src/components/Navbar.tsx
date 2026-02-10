@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, easeIn, motion } from "framer-motion";
+import logo from "../assets/logo.png";
 
 const Navbar: React.FC = () => {
 	const { t, i18n } = useTranslation();
@@ -24,19 +25,17 @@ const Navbar: React.FC = () => {
 	return (
 		<nav className="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md">
 			<div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
-				<a href="#" className="flex items-center gap-3 group">
-					<div className="w-8 h-8 border border-black/20 flex items-center justify-center group-hover:border-cyan-500/50 transition-colors duration-300">
-						<span className="text-black font-medium text-lg">N</span>
-					</div>
-					<div className="flex flex-col">
-						<span className="text-black tracking-[0.2em] text-sm font-semibold uppercase">
-							Northpart
-						</span>
-						<span className="text-xs tracking-widest text-cyan-400 uppercase">
-							EU Logistics
-						</span>
-					</div>
-				</a>
+				<div></div>
+				<motion.a
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ ease: "easeIn" }}
+					href="#"
+					className="flex items-center gap-3 group"
+				>
+					<img src={logo} alt="logo" className="logo" />
+					{/* <span className="text-black font-medium text-lg">N</span> */}
+				</motion.a>
 
 				{/* Desktop Menu */}
 				<div className="hidden md:flex items-center gap-8">
