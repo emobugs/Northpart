@@ -1,9 +1,9 @@
-import moduleDec from "../assets/images/1.jpg";
-import warehouse from "../assets/images/warehouse.jpg";
-import batteries from "../assets/images/batteries.jpg";
-import hybridBmw from "../assets/images/bmw.jpg";
-import nissanLeafModule from "../assets/images/module.jpg";
-import process from "../assets/images/process.jpg";
+import moduleDec from "../assets/images/1.webp";
+import warehouse from "../assets/images/warehouse.webp";
+import batteries from "../assets/images/batteries.webp";
+import hybridBmw from "../assets/images/bmw.webp";
+import nissanLeafModule from "../assets/images/module.webp";
+import process from "../assets/images/process.webp";
 
 export interface GalleryItem {
 	id: number;
