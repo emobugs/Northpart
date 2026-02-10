@@ -169,7 +169,7 @@ const Hero: React.FC = () => {
 								whileHover={{ scale: 1.02, borderRadius: "5px" }}
 								whileTap={{ scale: 0.98 }}
 								href="#products"
-								className="flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-3.5 text-md font-medium transition-all-200 shadow-[0_0_20px_-5px_rgba(8,145,178,0.4)]"
+								className="flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 px-8 py-3.5 text-md font-medium transition-all-200 shadow-[0_0_20px_-5px_rgba(8,145,178,0.4)]"
 							>
 								{t("hero.cta_inv")}{" "}
 								<Icon icon="solar:box-minimalistic-linear" width="18" />

@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
 						<span className="text-black tracking-[0.2em] text-sm font-semibold uppercase">
 							Northpart
 						</span>
-						<span className="text-xs tracking-widest text-cyan-500 uppercase">
+						<span className="text-xs tracking-widest text-cyan-400 uppercase">
 							EU Logistics
 						</span>
 					</div>

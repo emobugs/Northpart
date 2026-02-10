@@ -109,9 +109,9 @@ const Logistics: React.FC = () => {
 								<Icon icon="solar:delivery-linear" width="20" />
 							</div>
 							<div>
-								<h4 className="text-black font-medium text-sm">
+								<h3 className="text-black font-medium text-sm">
 									{t("logistics.feature_title")}
-								</h4>
+								</h3>
 								<p className="text-sm text-slate-500 mt-1">
 									{t("logistics.feature_desc")}
 								</p>
