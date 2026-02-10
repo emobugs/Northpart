@@ -37,6 +37,10 @@ const App: React.FC = () => {
 				},
 				fastScrollEnd: true,
 			});
+			const timer = setTimeout(() => {
+				ScrollTrigger.refresh();
+			}, 100);
+			return () => clearTimeout(timer);
 		},
 		{ scope: container },
 	);

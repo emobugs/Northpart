@@ -1,12 +1,11 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600&display=swap");
 /* index.css */
 html,
 body {
 	max-width: 100vw;
 	height: 100%;
 	margin: 0;
-	overflow-x: hidden; /* Това ще отреже всичко, което стърчи надясно */
+	overflow-x: hidden; /* реже всичко, което стърчи надясно */
 	scroll-behavior: smooth;
 }
 
@@ -101,7 +100,6 @@ body {
 	width: 100%;
 }
 
-/* В index.css върху главния контейнер */
 main {
 	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
@@ -119,11 +117,6 @@ main {
 	height: 100vh; /* За по-стари браузъри */
 	height: 100dvh; /* За мобилни - игнорира адресната лента */
 }
-
-#contact {
-	/* scroll-margin-top: 50px; */
-}
-/* Scrollbar */
 
 .custom-scrollbar::-webkit-scrollbar {
 	width: 5px;

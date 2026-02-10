@@ -6,12 +6,13 @@ import { useTranslation } from "react-i18next";
 // modula control slide in
 
 const heroContainerVariants: Variants = {
-	hidden: { opacity: 0 },
+	hidden: { opacity: 1 },
 	visible: {
 		opacity: 1,
 		transition: {
-			staggerChildren: 0.6, // По-голямо разстояние между заглавието и бутоните
-			delayChildren: 0.4,
+			staggerChildren: 0.5, // По-голямо разстояние между заглавието и бутоните
+			delayChildren: 0.3,
+			ease: "easeInOut",
 		},
 	},
 };
@@ -45,7 +46,7 @@ const HeroVisual = ({ isMobile = false }) => {
 					scale: [1, 1.2, 1],
 					opacity: [0, 0.5, 0],
 				}}
-				transition={{ delay: 1, duration: 5, repeat: Infinity, ease: "easeInOut" }}
+				transition={{ delay: 0.4, duration: 5, repeat: Infinity, ease: "easeInOut" }}
 				className="absolute inset-0 bg-cyan-500 rounded-full blur-[160px]"
 			></motion.div>
 
