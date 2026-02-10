@@ -44,9 +44,8 @@ const Products: React.FC = () => {
 	};
 	return (
 		<section id="products" className="py-24 relative z-10">
-			<div id="line-products" className="absolute top-1/2 left-80 w-0 h-0"></div>
 			<div className="max-w-7xl mx-auto">
-				<div className="flex flex-col justify-between md:px-16 md:pt-20 pt-10 p-4 gap-6 mx-auto text-center md:text-left">
+				<div className="flex flex-col justify-between md:px-16 md:pt-20 pt-10 gap-6 mx-auto text-center md:text-left">
 					<h2 className="text-3xl font-medium heading-primary tracking-tight">
 						{t("products.title")}
 					</h2>
@@ -58,7 +57,7 @@ const Products: React.FC = () => {
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.2 }}
-					className="flex overflow-x-auto snap-x snap-mandatory md:flex-none md:grid md:grid-cols-2 lg:grid-cols-3 gap-2 px-15 xl:py-20 scrollbar-hide"
+					className="flex overflow-x-auto snap-x snap-mandatory md:flex-none md:grid md:grid-cols-2 lg:grid-cols-3 gap-2 px-15 py-10 xl:py-20 scrollbar-hide"
 				>
 					{categories.map((item, idx) => {
 						const zIndexValue = categories.length - idx;
