@@ -99,6 +99,7 @@ const Contact: React.FC = () => {
 										<div className="flex gap-1">
 											{item.type === "email" ? (
 												<motion.a
+													aria-label={t("labels.email")}
 													whileHover={{
 														scale: 1.2,
 														y: -2,
@@ -122,6 +123,9 @@ const Contact: React.FC = () => {
 											) : (
 												item.links?.map((link, i) => (
 													<motion.a
+														aria-label={t(
+															`labels.${link.title.toLowerCase()}`,
+														)}
 														key={i}
 														href={link.href}
 														whileHover={{
@@ -210,6 +214,7 @@ const Contact: React.FC = () => {
 							</div>
 
 							<motion.button
+								aria-label={t("contact.send_btn")}
 								disabled={isSending}
 								type="submit"
 								whileHover={{ scale: 1.01 }}

@@ -44,6 +44,7 @@ const Navbar: React.FC = () => {
 						<a
 							key={item.id}
 							href={`#${item.id}`}
+							aria-label={t(`nav.${item.label}`)}
 							className="text-sm font-medium hover:text-black transition-colors"
 						>
 							{item.label}
@@ -57,6 +58,7 @@ const Navbar: React.FC = () => {
 							<button
 								key={lang.code}
 								onClick={() => i18n.changeLanguage(lang.code)}
+								aria-label="Change language"
 								className={`text-[10px] font-bold tracking-tighter transition-all cursor-pointer ${
 									i18n.language === lang.code
 										? "text-cyan-500 scale-110"
@@ -74,6 +76,7 @@ const Navbar: React.FC = () => {
 					<a
 						href="#contact"
 						className="flex items-center gap-2 bg-white text-black px-4 py-2 text-xs font-semibold uppercase tracking-wide hover:bg-cyan-50 transition-colors"
+						aria-label={t("nav.inquire_btn")}
 					>
 						<span>{t("nav.inquire_btn")}</span>
 						<Icon icon="solar:arrow-right-linear" width="16" />
@@ -83,6 +86,7 @@ const Navbar: React.FC = () => {
 				{/* Mobile Toggle */}
 				{/* Mobile Toggle Button */}
 				<button
+					aria-label={t("nav mobile toggle button")}
 					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 					className="md:hidden p-2 text-black cursor-pointer"
 				>
@@ -106,6 +110,7 @@ const Navbar: React.FC = () => {
 						>
 							{menuItems.map((item) => (
 								<a
+									aria-label={t(`nav.${item.label}`)}
 									key={item.id}
 									href={`#${item.id}`}
 									onClick={() => setIsMobileMenuOpen(false)} // Затваря менюто при клик
@@ -119,6 +124,7 @@ const Navbar: React.FC = () => {
 								<div className="flex gap-4">
 									{languages.map((lang) => (
 										<button
+											aria-label="Change language"
 											key={lang.code}
 											onClick={() => i18n.changeLanguage(lang.code)}
 											className={`text-sm font-bold ${

@@ -85,5 +85,15 @@
 			"message": "Cererea dumneavoastră..."
 		},
 		"send_btn": "Trimite Cererea"
+	},
+	"seo": {
+		"title": "Northpart | Soluții de Baterii EV și Solare",
+		"description": "Furnizor specializat de module de baterii pentru vehicule electrice, hibride și sisteme solare. Centru logistic în Silistra cu livrare rapidă în toată Europa."
+	},
+	"labels": {
+		"email": "Trimiteți un e-mail către Northpart",
+		"viber": "Contactați-ne prin Viber",
+		"whatsapp": "Contactați-ne prin WhatsApp",
+		"call": "Sunați la Northpart"
 	}
 }

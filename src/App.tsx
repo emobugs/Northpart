@@ -11,16 +11,18 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./i18n";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 const App: React.FC = () => {
+	const { t, i18n } = useTranslation();
 	{
 		/* gsap*/
 	}
 	const container = useRef(null);
 	useGSAP(
 		() => {
+			gsap.registerPlugin(ScrollTrigger);
 			const sections = gsap.utils.toArray(".snap-section");
 
 			ScrollTrigger.create({
@@ -29,8 +31,8 @@ const App: React.FC = () => {
 				end: "bottom bottom",
 				snap: {
 					snapTo: 1 / (sections.length - 1), // Автоматично изчислява точките на спиране
-					duration: { min: 0.2, max: 0.8 }, // Колко бързо да „залепва“
-					delay: 0.0, // Малко изчакване преди снапа
+					duration: { min: 0.2, max: 0.6 }, // Колко бързо да „залепва“
+					delay: 0.1, // Малко изчакване преди снапа
 					ease: "power2.inOut", // Плавна крива на движение
 				},
 				fastScrollEnd: true,
@@ -38,35 +40,45 @@ const App: React.FC = () => {
 		},
 		{ scope: container },
 	);
-
 	return (
-		<div className="relative min-h-screen scroll-container">
-			{/* Котва в самото начало */}
-			<div id="pt-nav" className="absolute top-0 left-0 w-0 h-0"></div>
+		<>
+			<Helmet>
+				<title>{t("seo.title")}</title>
+				<meta name="description" content={t("seo.description")} />
 
-			{/* <PowerStream /> */}
+				{/* Важно за Google: Указва текущия език на страницата */}
+				<html lang={i18n.language} />
 
-			<Navbar />
-			<div className="relative z-10 flex flex-col min-h-screen snap-y">
-				<main ref={container}>
-					<div className="snap-section">
-						<Hero />
-					</div>
-					<div className="snap-section">
-						<Products />
-					</div>
-					<div className="snap-section">
-						<Logistics />
-					</div>
-					<div className="snap-section">
-						<Gallery />
-					</div>
-					<div className="snap-section">
-						<Contact />
-					</div>
-				</main>
+				{/* Open Graph тагове за социални мрежи */}
+				<meta property="og:title" content={t("seo.title")} />
+				<meta property="og:description" content={t("seo.description")} />
+			</Helmet>
+			<div className="relative min-h-screen scroll-container">
+				{/* Котва в самото начало */}
+				<div id="pt-nav" className="absolute top-0 left-0 w-0 h-0"></div>
+
+				<Navbar />
+				<div className="relative z-10 flex flex-col min-h-screen snap-y">
+					<main ref={container}>
+						<div className="snap-section">
+							<Hero />
+						</div>
+						<div className="snap-section">
+							<Products />
+						</div>
+						<div className="snap-section">
+							<Logistics />
+						</div>
+						<div className="snap-section">
+							<Gallery />
+						</div>
+						<div className="snap-section">
+							<Contact />
+						</div>
+					</main>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

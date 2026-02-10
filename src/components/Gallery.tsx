@@ -96,6 +96,7 @@ const Gallery: React.FC = () => {
 				{/* СТРЕЛКА НАЛЯВО */}
 				<button
 					onClick={() => scroll("left")}
+					aria-label="Button left"
 					style={{
 						opacity: canScroll.left ? 1 : 0,
 						pointerEvents: canScroll.left ? "auto" : "none",
@@ -108,6 +109,7 @@ const Gallery: React.FC = () => {
 				{/* СТРЕЛКА НАДЯСНО */}
 				<button
 					onClick={() => scroll("right")}
+					aria-label="Button right"
 					style={{
 						opacity: canScroll.right ? 1 : 0,
 						pointerEvents: canScroll.right ? "auto" : "none",
@@ -192,6 +194,7 @@ const Gallery: React.FC = () => {
 							<div className="flex flex-col h-1/2 md:h-full bg-white relative min-h-0">
 								{/* Бутон за затваряне - фиксиран горе вдясно на текста */}
 								<button
+									aria-label="Close image button"
 									onClick={() => setSelectedImg(null)}
 									className="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-full transition-colors z-50 bg-white/80 backdrop-blur-sm cursor-pointer"
 								>

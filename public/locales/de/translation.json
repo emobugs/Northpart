@@ -86,5 +86,15 @@
 			"message": "Ihre Anfrage..."
 		},
 		"send_btn": "Anfrage Senden"
+	},
+	"seo": {
+		"title": "Northpart | Lösungen für EV- und Solarbatterien",
+		"description": "Spezialisierter Anbieter für Elektroauto-Batteriemodule, Hybrid-Systeme und LiFePO4-Speicher. Logistikzentrum in Bulgarien mit schnellem Versand EU-weit."
+	},
+	"labels": {
+		"email": "E-Mail an Northpart senden",
+		"viber": "Kontaktieren Sie uns über Viber",
+		"whatsapp": "Kontaktieren Sie uns über WhatsApp",
+		"call": "Northpart anrufen"
 	}
 }

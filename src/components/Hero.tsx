@@ -165,6 +165,7 @@ const Hero: React.FC = () => {
 						>
 							{/* View inventory button */}
 							<motion.a
+								aria-label={`${t("hero.cta_inv")} Button`}
 								whileHover={{ scale: 1.02, borderRadius: "5px" }}
 								whileTap={{ scale: 0.98 }}
 								href="#products"
@@ -176,6 +177,7 @@ const Hero: React.FC = () => {
 							{/* Inquiry button */}
 							<motion.a
 								href="#contact"
+								aria-label={`${t("hero.cta_inq")} Button`}
 								className="flex items-center justify-center gap-3 border border-black/10 hover:border-cyan-400 text-black px-8 py-3.5 text-sm font-medium transition-all-400 backdrop-blur-lg bg-white/5"
 							>
 								{t("hero.cta_inq")}{" "}

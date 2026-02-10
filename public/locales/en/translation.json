@@ -86,5 +86,15 @@
 			"message": "Your inquiry..."
 		},
 		"send_btn": "Send Enquiry"
+	},
+	"seo": {
+		"title": "Northpart | EV & Solar Battery Solutions B2B",
+		"description": "Supplier of EV, Hybrid and Solar battery modules. Based in Silistra, shipping worldwide."
+	},
+	"labels": {
+		"email": "Send an email to Northpart",
+		"viber": "Contact us via Viber",
+		"whatsapp": "Contact us via WhatsApp",
+		"call": "Call Northpart"
 	}
 }
