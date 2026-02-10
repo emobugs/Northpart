@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Icon } from "@iconify/react";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,6 +22,16 @@ const Products: React.FC = () => {
 			},
 		},
 	};
+
+	/* arrow left hide */
+	const scrollRef = useRef(null);
+
+	// Следим скрола вътре в конкретния контейнер
+	const { scrollXProgress } = useScroll({
+		container: scrollRef,
+	});
+	const opacity = useTransform(scrollXProgress, [0, 0.05], [1, 0]);
+
 	const cardVariants: Variants = {
 		hidden: {
 			opacity: 0,
@@ -61,10 +71,14 @@ const Products: React.FC = () => {
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.2 }}
 					className="flex overflow-x-auto snap-x snap-mandatory md:flex-none md:grid md:grid-cols-2 lg:grid-cols-3 gap-2 px-15 py-10 xl:py-20 scrollbar-hide"
+					ref={scrollRef}
 				>
-					<div className="absolute top-1/2 translate-y-1/2 block md:hidden right-0 z-10 opacity-20">
+					<motion.div
+						className="absolute top-1/2 translate-y-1/2 block md:hidden right-0 z-10 opacity-15"
+						style={{ opacity }}
+					>
 						<FontAwesomeIcon icon={faCircleArrowLeft} size="4x" />
-					</div>
+					</motion.div>
 					{categories.map((item, idx) => {
 						const zIndexValue = categories.length - idx;
 						return (
