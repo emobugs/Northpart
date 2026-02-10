@@ -1,4 +1,3 @@
-import { tr } from "framer-motion/client";
 import moduleDec from "../assets/images/1.jpg";
 import warehouse from "../assets/images/warehouse.jpg";
 import batteries from "../assets/images/batteries.jpg";

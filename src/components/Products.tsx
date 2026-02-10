@@ -1,7 +1,9 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { motion, stagger, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Products: React.FC = () => {
 	const { t } = useTranslation();
@@ -52,6 +54,7 @@ const Products: React.FC = () => {
 					<p className="text-slate-400 mt-2 max-w-lg">{t("products.subtitle")}</p>
 				</div>
 
+				{/* Картите container*/}
 				<motion.div
 					variants={containerVariants}
 					initial="hidden"
@@ -59,6 +62,9 @@ const Products: React.FC = () => {
 					viewport={{ once: true, amount: 0.2 }}
 					className="flex overflow-x-auto snap-x snap-mandatory md:flex-none md:grid md:grid-cols-2 lg:grid-cols-3 gap-2 px-15 py-10 xl:py-20 scrollbar-hide"
 				>
+					<div className="absolute top-1/2 translate-y-1/2 block md:hidden right-0 z-10 opacity-20">
+						<FontAwesomeIcon icon={faCircleArrowLeft} size="4x" />
+					</div>
 					{categories.map((item, idx) => {
 						const zIndexValue = categories.length - idx;
 						return (

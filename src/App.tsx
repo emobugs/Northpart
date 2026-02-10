@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Logistics from "./components/Logistics";
@@ -11,13 +11,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./i18n";
-// Интерфейс за частиците в анимацията
-interface Star {
-	x: number;
-	y: number;
-	size: number;
-	opacity: number;
-}
 
 gsap.registerPlugin(ScrollTrigger);
 

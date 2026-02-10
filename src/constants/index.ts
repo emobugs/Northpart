@@ -1,9 +1,27 @@
-import i18next from "i18next";
 import { type TFunction } from "i18next";
 import { faEnvelope, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp, faViber } from "@fortawesome/free-brands-svg-icons";
+import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 
-export const getContactItems = (t: TFunction) => [
+export interface ContactLink {
+	href: string;
+	icon: IconProp;
+	color?: string;
+	textColor?: string;
+	title: string;
+}
+
+export interface ContactItem {
+	type: "email" | "phone";
+	label: string;
+	val: string;
+	href?: string;
+	icon?: IconProp;
+	color: string;
+	links?: ContactLink[];
+}
+
+export const getContactItems = (t: TFunction): ContactItem[] => [
 	{
 		type: "email",
 		label: t("contact.labels.email"),

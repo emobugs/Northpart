@@ -1,13 +1,11 @@
 import React from "react";
-import { Icon, icon } from "@iconify/react";
 import { motion, type Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getContactItems } from "../constants";
-import { a } from "framer-motion/client";
 
 const SERVICE_ID = "service_hifdqqc";
 const TEMPLATE_ID = "template_1yft9yi";
@@ -114,7 +112,12 @@ const Contact: React.FC = () => {
 													href={item.href}
 													className="text-cyan-600 hover:text-cyan-500 transition-colors m-1"
 												>
-													<FontAwesomeIcon icon={item.icon} size="lg" />
+													{item.icon && (
+														<FontAwesomeIcon
+															icon={item.icon}
+															size="lg"
+														/>
+													)}
 												</motion.a>
 											) : (
 												item.links?.map((link, i) => (
