@@ -15,7 +15,8 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 
 const App: React.FC = () => {
-	const { t, i18n } = useTranslation();
+	const { t, i18n, ready } = useTranslation();
+
 	{
 		/* gsap*/
 	}
@@ -44,6 +45,7 @@ const App: React.FC = () => {
 		},
 		{ scope: container },
 	);
+	if (!ready) return null;
 	return (
 		<>
 			<Helmet>
