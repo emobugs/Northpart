@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Logistics from "./components/Logistics";
@@ -12,14 +12,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./i18n";
 import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
 
 const App: React.FC = () => {
-	const { t, i18n, ready } = useTranslation();
+	const { t, i18n } = useTranslation();
 
-	{
-		/* gsap*/
-	}
+	/* Промяна на мета данните според езика */
+	useEffect(() => {
+		document.title = t("seo.title");
+
+		let metaDesc = document.querySelector('meta[name="description"]');
+		if (!metaDesc) {
+			metaDesc = document.createElement("meta");
+			metaDesc.setAttribute("name", "description");
+			document.head.appendChild(metaDesc);
+		}
+		metaDesc.setAttribute("content", t("seo.description"));
+
+		document.documentElement.lang = i18n.language;
+	}, [i18n.language, t]);
+
+	/* gsap*/
 	const container = useRef(null);
 	useGSAP(
 		() => {
@@ -45,20 +57,8 @@ const App: React.FC = () => {
 		},
 		{ scope: container },
 	);
-	if (!ready) return null;
 	return (
 		<>
-			<Helmet>
-				<title>{t("seo.title")}</title>
-				<meta name="description" content={t("seo.description")} />
-
-				{/* Важно за Google: Указва текущия език на страницата */}
-				<html lang={i18n.language} />
-
-				{/* Open Graph тагове за социални мрежи */}
-				<meta property="og:title" content={t("seo.title")} />
-				<meta property="og:description" content={t("seo.description")} />
-			</Helmet>
 			<div className="relative min-h-screen scroll-container">
 				{/* Котва в самото начало */}
 				<div id="pt-nav" className="absolute top-0 left-0 w-0 h-0"></div>

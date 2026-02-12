@@ -16,6 +16,9 @@ i18n.use(HttpApi)
 		backend: {
 			loadPath: "/locales/{{lng}}/translation.json",
 		},
+		react: {
+			useSuspense: false, // Важно за стабилността на мета таговете
+		},
 	});
 
 export default i18n;
