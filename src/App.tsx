@@ -1,17 +1,19 @@
-import React, { useRef, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Logistics from "./components/Logistics";
-import Gallery from "./components/Gallery";
-import Contact from "./components/Contact";
-import Products from "./components/Products";
 import "./index.css";
 import "./App.css";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./i18n";
 import { useTranslation } from "react-i18next";
+import React, { useRef, useEffect, Suspense, lazy } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const Logistics = lazy(() => import("./components/Logistics"));
+const Gallery = lazy(() => import("./components/Gallery"));
+const Contact = lazy(() => import("./components/Contact"));
+const Products = lazy(() => import("./components/Products"));
 
 const App: React.FC = () => {
 	const { t, i18n } = useTranslation();
@@ -69,18 +71,20 @@ const App: React.FC = () => {
 						<div className="snap-section">
 							<Hero />
 						</div>
-						<div className="snap-section">
-							<Products />
-						</div>
-						<div className="snap-section">
-							<Logistics />
-						</div>
-						<div className="snap-section">
-							<Gallery />
-						</div>
-						<div className="snap-section">
-							<Contact />
-						</div>
+						<Suspense fallback={<div>Loading...</div>}>
+							<div className="snap-section">
+								<Products />
+							</div>
+							<div className="snap-section">
+								<Logistics />
+							</div>
+							<div className="snap-section">
+								<Gallery />
+							</div>
+							<div className="snap-section">
+								<Contact />
+							</div>
+						</Suspense>
 					</main>
 				</div>
 			</div>
