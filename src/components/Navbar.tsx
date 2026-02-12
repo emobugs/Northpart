@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ ease: "easeIn" }}
-					href="#"
+					href="#hero"
 					className="flex items-center gap-3 group"
 				>
 					<img src={logo} alt="logo" className="logo" />
