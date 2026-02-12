@@ -120,7 +120,7 @@ const HeroVisual = ({ isMobile = false }) => {
 };
 
 const Hero: React.FC = () => {
-	const { t } = useTranslation();
+	const { t, ready } = useTranslation();
 	return (
 		<>
 			<motion.section
@@ -142,11 +142,21 @@ const Hero: React.FC = () => {
 						</motion.div>
 
 						<motion.h1
+							initial="hidden"
+							animate={ready ? "visible" : "hidden"}
 							variants={itemVariants}
 							className="text-4xl lg:text-6xl font-medium tracking-tight heading-primary leading-[1.1]"
 						>
-							{t("hero.title_top")} <br />
-							<span className="tech-gradient-text">{t("hero.title_bottom")}</span>
+							{ready ? (
+								<>
+									{t("hero.title_top")} <br />
+									<span className="tech-gradient-text">
+										{t("hero.title_bottom")}
+									</span>
+								</>
+							) : (
+								<span className="opacity-0">Loading...</span>
+							)}
 						</motion.h1>
 
 						<motion.p
