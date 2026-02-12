@@ -24,8 +24,7 @@ const Navbar: React.FC = () => {
 
 	return (
 		<nav className="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md">
-			<div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
-				<div></div>
+			<div className="max-w-7xl w-full mx-auto h-20 flex relative justify-between">
 				<motion.a
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -34,11 +33,10 @@ const Navbar: React.FC = () => {
 					className="flex items-center gap-3 group"
 				>
 					<img src={logo} alt="logo" className="logo" />
-					{/* <span className="text-black font-medium text-lg">N</span> */}
 				</motion.a>
 
 				{/* Desktop Menu */}
-				<div className="hidden md:flex items-center gap-8">
+				<div className="hidden md:flex items-center gap-8 justify-center">
 					{menuItems.map((item) => (
 						<a
 							key={item.id}
