@@ -19,7 +19,7 @@ body {
 @media (max-width: 770px) {
 	.swiper-pagination {
 		/* Resets the default bottom position */
-		bottom: 15% !important;
+		bottom: 10% !important;
 
 		left: 0;
 		width: 100%;

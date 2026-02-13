@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
-
+import type { Swiper as SwiperType } from "swiper";
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
@@ -15,76 +14,117 @@ import img4 from "../assets/images/slider/solar.webp";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 const Slider = () => {
-	const slides = [
-		{ id: 1, img: img1, title: "Slide 1" },
-		{ id: 2, img: img2, title: "Slide 2" },
-		{ id: 3, img: img3, title: "Slide 3" },
-		{ id: 4, img: img4, title: "Slide 4" },
-	];
+	const { t } = useTranslation();
 
+	// 1. Взимаме преводите и изрично ги третираме като масив
+	const slidesData = t("hero.slides", { returnObjects: true });
+	const commonCta = t("hero.common.cta");
+
+	const finalSlides = useMemo(() => {
+		// Проверка дали преводите са заредени и са масив
+		if (!Array.isArray(slidesData)) return [];
+
+		const images = [img1, img2, img3, img4];
+		return slidesData
+			.map((slide, index) => ({
+				...slide,
+				img: images[index],
+			}))
+			.sort(() => Math.random() - 0.5);
+	}, [slidesData]);
+
+	// 2. Анимация за текстовете (Stagger ефект)
+	const onSlideChange = (swiper: SwiperType) => {
+		const activeSlide = swiper.slides[swiper.activeIndex];
+		const texts = activeSlide.querySelectorAll(".animate-text");
+
+		gsap.set(texts, { opacity: 0, y: 40 });
+		gsap.to(texts, {
+			opacity: 1,
+			y: 0,
+			duration: 0.8,
+			stagger: 0.2,
+			ease: "power3.out",
+			delay: 0.4,
+		});
+	};
+
+	// 3. GSAP Анимация за панорамно движение (само мобилен)
 	useGSAP(() => {
 		const mm = gsap.matchMedia();
 
-		// Тази анимация ще се изпълни САМО ако екранът е под 768px
 		mm.add("(max-width: 768px)", () => {
-			// Задаваме по-голям мащаб за мобилни, за да няма бели ивици
-			gsap.set(".hero-img", { scale: 1.6 });
-
+			gsap.set(".hero-img", { scale: 1.7 });
 			gsap.fromTo(
 				".hero-img",
-				{ xPercent: -25 }, // Плъзгане наляво (разкрива дясната кола)
+				{ xPercent: -25 },
 				{
-					xPercent: 25, // Плъзгане надясно
+					xPercent: 25,
 					duration: 12,
 					ease: "sine.inOut",
 					repeat: -1,
 					yoyo: true,
 				},
-			).progress(0.5); // Стартира от центъра
+			).progress(0.5);
 		});
 
-		// Опционално: За десктоп (над 769px) можем да нулираме всичко
 		mm.add("(min-width: 769px)", () => {
-			gsap.set(".hero-img", {
-				xPercent: 0,
-				scale: 1.1, // По-малък зуум за големи екрани
-			});
+			gsap.set(".hero-img", { xPercent: 0, scale: 1.1 });
 		});
 
-		return () => mm.revert(); // Почистване на анимациите
-	});
+		return () => mm.revert();
+	}, [finalSlides]); // Рестартираме при зареждане на слайдовете
+
+	// 4. ГАРД: Ако няма слайдове, не рендираме Swiper (важно за Loop режима)
+	if (finalSlides.length === 0) return null;
 
 	return (
-		<div className="flex min-h-screen w-full justify-center items-center">
+		<div className="relative w-full h-screen overflow-hidden bg-black">
 			<Swiper
-				// onSlideChangeTransitionStart={onSlideChange}
+				onSlideChangeTransitionStart={onSlideChange}
 				modules={[Autoplay, Navigation, Pagination, EffectFade]}
-				effect="fade" // Smooth fade transition like a pro hero section
-				speed={1000}
-				// fadeEffect={{ crossFade: true }}
+				effect="fade"
+				fadeEffect={{ crossFade: true }}
+				speed={1500}
 				autoplay={{ delay: 6000, disableOnInteraction: false }}
-				loop={true}
+				loop={finalSlides.length > 1}
 				pagination={{ clickable: true }}
 				navigation={true}
 				className="h-full w-full"
 			>
-				{slides.map((slide) => (
+				{finalSlides.map((slide) => (
 					<SwiperSlide key={slide.id}>
-						<div className="relative mx-auto w-full h-[50vh] md:max-w-[90vw] md:h-[80vh] flex items-center justify-center">
-							<img
-								src={slide.img}
-								alt={slide.title}
-								className="hero-img absolute inset-0 w-full h-full object-cover"
-								style={{ scale: 1.2, objectPosition: "center" }}
-							/>
-							{/* Overlay for text readability */}
-							<div className="absolute inset-0 bg-black/40 min-w-full" />
-
-							<h1 className="relative z-10 text-white text-5xl font-bold">
-								{slide.title}
-							</h1>
+						<div className="flex flex-col w-full h-full bg-[#1a1d21]">
+							{" "}
+							{/* Цвят, съвпадащ с пода на снимката */}
+							{/* ГОРНА ЧАСТ: Изображението */}
+							<div className="relative w-full h-[55vh] md:h-full overflow-hidden">
+								<img
+									src={slide.img}
+									alt={slide.title}
+									className="hero-img absolute inset-0 w-full h-full object-cover"
+									style={{ objectPosition: "center bottom" }}
+								/>
+								{/* Градиент, който "прелива" снимката в долния блок */}
+								<div className="absolute inset-x-0 bottom-0 h-200 bg-gradient-to-t from-[#1a1d21] to-transparent z-10 md:hidden" />
+							</div>
+							{/* ДОЛНА ЧАСТ: Текст и Бутони (на мобилен) */}
+							<div className="relative flex-1 flex flex-col md:justify-center justify-start px-6 py-6 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
+								<div className="max-w-5xl mx-auto text-center md:text-center">
+									<h1 className="animate-text opacity-0 text-white text-xl md:text-7xl font-bold mb-3 uppercase leading-tight break-words px-2">
+										{slide.title}
+									</h1>
+									<p className="animate-text opacity-0 text-gray-300 text-base text-md md:text-xl mb-8 md:mb-10 leading-snug">
+										{slide.description}
+									</p>
+									<button className="animate-text opacity-0 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest transition-all">
+										{commonCta}
+									</button>
+								</div>
+							</div>
 						</div>
 					</SwiperSlide>
 				))}

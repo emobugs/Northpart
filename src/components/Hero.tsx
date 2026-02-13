@@ -4,9 +4,9 @@ import Slider from "./Slider";
 const Hero: React.FC = () => {
 	// const { t, ready } = useTranslation();
 	return (
-		<>
+		<div className="pt-15">
 			<Slider />
-		</>
+		</div>
 	);
 };
 
