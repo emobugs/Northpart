@@ -114,17 +114,20 @@ const Slider = () => {
 								<div className="absolute inset-x-0 bottom-0 h-200 bg-gradient-to-t from-[#1a1d21] to-transparent z-10 md:hidden" />
 							</div>
 							{/* ДОЛНА ЧАСТ: Текст и Бутони (на мобилен) */}
-							<div className="relative flex-1 flex flex-col md:justify-center justify-start gap-2 px-6 py-6 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
-								<div className="p-4 max-w-5xl mx-auto text-center md:text-center">
+							<div className="relative flex-1 flex flex-col md:justify-center justify-start gap-2 py-6 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
+								<div className="p-4 max-w-5xl md:ml-10 text-center md:text-center">
 									<h1 className="animate-text opacity-0 text-white text-xl md:text-7xl font-bold mb-3 pt-4 uppercase leading-tight break-words px-2">
 										{slide.title}
 									</h1>
 									<p className="animate-text opacity-0 text-gray-300 text-base text-md md:text-xl mb-8 md:mb-10 leading-snug">
 										{slide.description}
 									</p>
-									<button className="animate-text opacity-0 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest transition-all">
+									<a
+										href="#contact"
+										className="animate-text opacity-0 inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest transition-all shadow-lg text-center"
+									>
 										{commonCta}
-									</button>
+									</a>
 								</div>
 							</div>
 						</div>
