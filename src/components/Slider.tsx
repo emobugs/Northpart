@@ -108,7 +108,7 @@ const Slider = () => {
 							{" "}
 							{/* Цвят, съвпадащ с пода на снимката */}
 							{/* ГОРНА ЧАСТ: Изображението */}
-							<div className="relative w-full h-[55vh] md:h-full overflow-hidden">
+							<div className="relative w-full h-[45vh] md:h-full overflow-hidden">
 								<img
 									src={slide.img}
 									alt={slide.title}
@@ -119,7 +119,7 @@ const Slider = () => {
 								<div className="absolute inset-x-0 bottom-0 h-200 bg-gradient-to-t from-black/60 to-transparent z-10 md:hidden" />
 							</div>
 							{/* ДОЛНА ЧАСТ: Текст и Бутони (на мобилен) */}
-							<div className="relative flex-1 flex flex-col md:justify-center justify-start gap-2 py-6 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
+							<div className="relative flex-1 flex flex-col md:justify-center justify-start gap-2 py-3 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
 								<div className="p-4 max-w-5xl md:ml-10 text-center md:text-center">
 									<h1 className="animate-text opacity-0 text-white text-xl md:text-7xl font-bold mb-3 pt-4 uppercase leading-tight break-words px-2">
 										{slide.title}
