@@ -151,8 +151,7 @@ const Gallery: React.FC = () => {
 								className="w-full h-full object-cover"
 								alt={item.translations[currentLang]?.title}
 							/>
-							{/* <div className=" pb-2 z-20 translate-y-2 hover:translate-y-0 transition-transform duration-500"> */}
-							<div className="flex p-4 items-center justify-center h-[80px] text-center">
+							<div className="absolute bottom-0 left-0 w-full flex bg-white p-4 items-center justify-center h-[70px] text-center">
 								<h3 className="text-md  md:text-base font-medium text-black mb-2 text-slate-800 leading-tight">
 									{item.translations[currentLang]?.title}
 								</h3>
