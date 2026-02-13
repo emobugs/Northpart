@@ -7,24 +7,31 @@
 		"inquire_btn": "Anfrage senden"
 	},
 	"hero": {
-		"badge": "Lager Silistra betriebsbereit",
-		"title_top": "Hochleistungs-EV-",
-		"title_bottom": "Hybrid-Batteriesysteme",
-		"subtitle": "Europas strategischer B2B-Partner für Hochvolt-EV-Module und LiFePO4-Lösungen",
-		"stock": "Einheiten auf Lager",
-		"cta_inv": "Bestand ansehen",
-		"cta_inq": "Großhandelsanfrage",
-		"stats": {
-			"sold": "Batterien VERKAUFT",
-			"dispatch": "Versand",
-			"coverage": "Abdeckung"
+		"common": {
+			"cta": "Anfrage senden"
 		},
-		"visual": {
-			"intel": "Systemintelligenz",
-			"monitoring": "Intelligente Überwachung & Modulare Steuerung",
-			"stock_status": "Auf Lager",
-			"capacity": "Systemkapazität"
-		}
+		"slides": [
+			{
+				"id": "ev",
+				"title": "Hochleistungs-EV-Batteriesysteme",
+				"description": "Spezialisierte Hochvoltmodule für Marktführer: Tesla (S, 3, Y), Audi e-tron, BMW i3, Nissan Leaf und mehr. Ab Lager für schnelle EU-Lieferung verfügbar."
+			},
+			{
+				"id": "hev",
+				"title": "Führende HEV-Batterielösungen",
+				"description": "Zuverlässige Ersatzbatterien für die gängigsten Hybridmodelle: Toyota Prius, Auris und RAV4. Stellen Sie die volle Effizienz Ihres Fahrzeugs wieder her."
+			},
+			{
+				"id": "phev",
+				"title": "Premium-PHEV-Batteriemodule",
+				"description": "Hochwertige Module für PHEV-Systeme von Volkswagen, Audi, Volvo, Mitsubishi Outlander und Toyota RAV4. Geprüfte Komponenten mit garantierter Herkunft."
+			},
+			{
+				"id": "ess",
+				"title": "Innovative Solarenergiespeicherung",
+				"description": "Industrielle LiFePO4-Zellen und -Module für nachhaltige Energiespeichersysteme. Lösungen für Haus und Gewerbe mit hoher Zyklenfestigkeit."
+			}
+		]
 	},
 	"products": {
 		"title": "Produktkategorien",

@@ -112,9 +112,9 @@ const Slider = () => {
 								<div className="absolute inset-x-0 bottom-0 h-200 bg-gradient-to-t from-[#1a1d21] to-transparent z-10 md:hidden" />
 							</div>
 							{/* ДОЛНА ЧАСТ: Текст и Бутони (на мобилен) */}
-							<div className="relative flex-1 flex flex-col md:justify-center justify-start px-6 py-6 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
-								<div className="max-w-5xl mx-auto text-center md:text-center">
-									<h1 className="animate-text opacity-0 text-white text-xl md:text-7xl font-bold mb-3 uppercase leading-tight break-words px-2">
+							<div className="relative flex-1 flex flex-col md:justify-center justify-start gap-2 px-6 py-6 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
+								<div className="p-4 max-w-5xl mx-auto text-center md:text-center">
+									<h1 className="animate-text opacity-0 text-white text-xl md:text-7xl font-bold mb-3 pt-4 uppercase leading-tight break-words px-2">
 										{slide.title}
 									</h1>
 									<p className="animate-text opacity-0 text-gray-300 text-base text-md md:text-xl mb-8 md:mb-10 leading-snug">

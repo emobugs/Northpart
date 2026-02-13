@@ -7,24 +7,31 @@
 		"inquire_btn": "Cere ofertă"
 	},
 	"hero": {
-		"badge": "Depozitul Silistra este operațional",
-		"title_top": "Sisteme de baterii EV",
-		"title_bottom": "și hibride de înaltă performanță",
-		"subtitle": "Partenerul B2B strategic al Europei pentru module EV de înaltă tensiune și soluții LiFePO4",
-		"stock": "unități în stoc",
-		"cta_inv": "Vezi stocul",
-		"cta_inq": "Cerere de gros",
-		"stats": {
-			"sold": "Baterii VÂNDUTE",
-			"dispatch": "Expediere",
-			"coverage": "Acoperire"
+		"common": {
+			"cta": "Trimite o cerere"
 		},
-		"visual": {
-			"intel": "Inteligența sistemului",
-			"monitoring": "Monitorizare inteligentă și control modular",
-			"stock_status": "În stoc",
-			"capacity": "Capacitatea sistemului"
-		}
+		"slides": [
+			{
+				"id": "ev",
+				"title": "Sisteme de baterii EV de înaltă performanță",
+				"description": "Module specializate de înaltă tensiune pentru liderii pieței: Tesla (S, 3, Y), Audi e-tron, BMW i3, Nissan Leaf și altele. Disponibile în stoc pentru livrare rapidă în UE."
+			},
+			{
+				"id": "hev",
+				"title": "Soluții de top pentru baterii hibride",
+				"description": "Baterii de schimb fiabile pentru cele mai populare modele hibride: Toyota Prius, Auris și RAV4. Restabiliți eficiența completă a vehiculului dumneavoastră."
+			},
+			{
+				"id": "phev",
+				"title": "Module de baterii Premium pentru Plug-in Hybrid",
+				"description": "Module de înaltă calitate pentru sistemele PHEV de la Volkswagen, Audi, Volvo, Mitsubishi Outlander și Toyota RAV4. Componente testate cu origine garantată."
+			},
+			{
+				"id": "ess",
+				"title": "Stocare inovatoare a energiei solare",
+				"description": "Celule și module industriale LiFePO4 pentru sisteme durabile de stocare a energiei. Soluții pentru casă și afaceri cu rezistență ciclică ridicată."
+			}
+		]
 	},
 	"products": {
 		"title": "Categorii de Produse",

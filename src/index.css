@@ -54,6 +54,7 @@ body {
 		--text-muted: #64748b; /* slate-500 */
 		--accent-cyan: #0891b2; /* cyan-600 */
 		--glass-bg: rgba(255, 255, 255, 0.3);
+		--glass-bg-2: rgba(255, 255, 255, 0.1);
 		--glass-border: rgba(15, 23, 42, 0.08);
 	}
 

@@ -20,6 +20,8 @@ const Navbar: React.FC = () => {
 		{ code: "bg", label: "BG" },
 		{ code: "de", label: "DE" },
 		{ code: "ro", label: "RO" },
+		{ code: "tr", label: "TR" },
+		{ code: "el", label: "GR" },
 	];
 
 	return (

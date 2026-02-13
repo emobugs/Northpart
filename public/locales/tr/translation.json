@@ -1,0 +1,107 @@
+{
+	"nav": {
+		"products": "Envanter",
+		"logistics": "Lojistik",
+		"gallery": "Galeri",
+		"contact": "İletişim",
+		"inquire_btn": "Stok Sorgula"
+	},
+	"hero": {
+		"common": {
+			"cta": "Talep Oluştur"
+		},
+		"slides": [
+			{
+				"id": "ev",
+				"title": "Yüksek Performanslı EV Batarya Sistemleri",
+				"description": "Pazar liderleri için özel yüksek voltajlı modüller: Tesla (S, 3, Y), Audi e-tron, BMW i3, Nissan Leaf ve daha fazlası. AB genelinde hızlı teslimat için stokta hazır."
+			},
+			{
+				"id": "hev",
+				"title": "Öncü HEV Batarya Çözümleri",
+				"description": "En yaygın hibrit modelleri için güvenilir yedek bataryalar: Toyota Prius, Auris ve RAV4. Aracınızın tam verimliliğini geri kazanın."
+			},
+			{
+				"id": "phev",
+				"title": "Premium PHEV Batarya Modülleri",
+				"description": "Volkswagen, Audi, Volvo, Mitsubishi Outlander ve Toyota RAV4'ün PHEV sistemleri için yüksek kaliteli modüller. Garantili menşeli, test edilmiş bileşenler."
+			},
+			{
+				"id": "ess",
+				"title": "Yenilikçi Güneş Enerjisi Depolama",
+				"description": "Sürdürülebilir enerji depolama sistemleri için endüstriyel LiFePO4 hücreleri ve modülleri. Yüksek döngü dayanıklılığı ile ev ve iş yerleri için çözümler."
+			}
+		]
+	},
+	"products": {
+		"title": "Ürün Kategorileri",
+		"subtitle": "Güvenilirlik için tasarlandı. Performans için tedarik edildi.",
+		"items": {
+			"ev": {
+				"title": "EV Batarya Modülleri",
+				"desc": "Büyük EV platformları için Tier-1 yüksek voltaj modülleri. OEM düzeyinde performans sağlamak için SOH (Sağlık Durumu) ve iç direnç açısından titizlikle test edilmiştir.",
+				"f1": "NMC ve NCA Kimyası",
+				"f2": "400V - 800V Mimarisi"
+			},
+			"hybrid": {
+				"title": "Hibrit (HEV/PHEV) Sistemleri",
+				"desc": "Hibrit araçlar için özel yedek paket envanteri. Toyota, Lexus ve Avrupa PHEV modelleri için sertifikalı yüksek deşarjlı çözümler sunuyoruz.",
+				"f1": "NiMH ve Li-ion Paketleri",
+				"f2": "Test Edilmiş ve Sertifikalı A Sınıfı"
+			},
+			"lifepo4": {
+				"title": "LiFePO4 Endüstriyel Hücreler",
+				"desc": "Güvenli, ultra uzun ömürlü Lityum Demir Fosfat çözümleri. Yüksek döngülü endüstriyel uygulamalar, yedek güç ve ağır hizmet makineleri için tasarlanmıştır.",
+				"f1": "6000+ Şarj Döngüsü",
+				"f2": "Üstün Termal Kararlılık"
+			}
+		}
+	},
+
+	"logistics": {
+		"label": "Lojistik Yeteneği",
+		"title": "Avrupa'ya Açılan Stratejik Kapı.",
+		"description": "Yüksek voltajlı EV modülleri ve endüstriyel güç sistemleri için Avrupa'nın öncü B2B tedarikçisi. AB genelinde hızlı lojistik ve güvenilir teslimat.",
+		"feature_title": "Pan-Avrupa Lojistiği",
+		"feature_desc": "3-5 gün içinde paletli teslimat için büyük kargo taşıyıcıları ile ortaklıklar.",
+		"hub": "SİLİSTRE, BG (MERKEZ)"
+	},
+	"gallery": {
+		"title": "Galeri",
+		"view_details": "Detayları Gör",
+		"specs_label": "Teknik Özellikler",
+		"grade_label": "Sınıf",
+		"stock_label": "Stok",
+		"available": "Mevcut",
+		"automotive": "Otomotiv A+"
+	},
+	"contact": {
+		"title": "Bize Ulaşın",
+		"subtitle": "Doğrudan toptan fiyatlandırma ve teknik destek talep üzerine mevcuttur.",
+		"labels": {
+			"email": "E-posta",
+			"technical": "Teknik",
+			"sales": "Satış",
+			"first_name": "Ad",
+			"last_name": "Soyad",
+			"message": "Mesaj"
+		},
+		"placeholders": {
+			"first": "Ahmet",
+			"last": "Yılmaz",
+			"email": "ahmet@ornek.com",
+			"message": "Talebiniz..."
+		},
+		"send_btn": "Talep Gönder"
+	},
+	"seo": {
+		"title": "Northpart | EV ve Güneş Enerjisi Batarya Çözümleri",
+		"description": "EV, Hibrit ve Güneş enerjisi batarya modülleri tedarikçisi. Silistre merkezli, dünya çapında sevkiyat."
+	},
+	"labels": {
+		"email": "Northpart'a e-posta gönder",
+		"viber": "Viber üzerinden bizimle iletişime geçin",
+		"whatsapp": "WhatsApp üzerinden bizimle iletişime geçin",
+		"call": "Northpart'ı ara"
+	}
+}

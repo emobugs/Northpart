@@ -8,7 +8,7 @@ i18n.use(HttpApi)
 	.use(initReactI18next)
 	.init({
 		fallbackLng: "en",
-		supportedLngs: ["en", "bg", "de", "ro"],
+		supportedLngs: ["en", "bg", "de", "ro", "tr", "el"],
 		debug: false,
 		interpolation: {
 			escapeValue: false,

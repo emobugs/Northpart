@@ -7,24 +7,31 @@
 		"inquire_btn": "Inquire Stock"
 	},
 	"hero": {
-		"badge": "Silistra Warehouse Operational",
-		"title_top": "High-Performance EV",
-		"title_bottom": "Hybrid Battery Systems",
-		"subtitle": "Europe's strategic B2B partner for high-voltage EV modules and LiFePO4 solutions",
-		"stock": "units in stock",
-		"cta_inv": "View Inventory",
-		"cta_inq": "Wholesale Inquiry",
-		"stats": {
-			"sold": "Batteries SOLD",
-			"dispatch": "Dispatch",
-			"coverage": "Coverage"
+		"common": {
+			"cta": "Make an inquiry"
 		},
-		"visual": {
-			"intel": "System Intelligence",
-			"monitoring": "Smart Monitoring & Modular Control",
-			"stock_status": "In Stock",
-			"capacity": "System Capacity"
-		}
+		"slides": [
+			{
+				"id": "ev",
+				"title": "High-Performance EV Battery Systems",
+				"description": "Specialized high-voltage modules for market leaders: Tesla (S, 3, Y), Audi e-tron, BMW i3, Nissan Leaf, and more. In-stock for rapid EU delivery."
+			},
+			{
+				"id": "hev",
+				"title": "Leading HEV Battery Solutions",
+				"description": "Reliable replacement batteries for mainstream hybrid models: Toyota Prius, Auris, and RAV4. Restore your vehicle's peak efficiency."
+			},
+			{
+				"id": "phev",
+				"title": "Premium PHEV Battery Modules",
+				"description": "High-quality modules for PHEV systems from Volkswagen, Audi, Volvo, Mitsubishi Outlander, and Toyota RAV4. Tested components with guaranteed origin."
+			},
+			{
+				"id": "ess",
+				"title": "Advanced Energy Storage Solutions",
+				"description": "Industrial LiFePO4 cells and modules for sustainable energy storage. Solutions for home and business with high cyclic durability."
+			}
+		]
 	},
 	"products": {
 		"title": "Product Categories",
