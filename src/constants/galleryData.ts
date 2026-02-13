@@ -4,6 +4,8 @@ import batteries from "../assets/images/batteries.webp";
 import hybridBmw from "../assets/images/bmw.webp";
 import nissanLeafModule from "../assets/images/module.webp";
 import process from "../assets/images/process.webp";
+import enclosure from "../assets/images/enclosure.webp";
+import internalArch from "../assets/images/internal-architecture.webp";
 
 export interface GalleryItem {
 	id: number;
@@ -161,6 +163,52 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 			ro: {
 				title: "Expertiză Tehnică și Precizie",
 				desc: "Inginerii noștri inspectează meticulos fiecare modul de baterie EV, asigurând o calitate maximă și precizie în fiecare etapă a procesului de dezasamblare.",
+			},
+		},
+	},
+	{
+		id: 8,
+		src: enclosure,
+		alt: "EV Battery High-Voltage Enclosure",
+		translations: {
+			en: {
+				title: "High-Voltage Battery Enclosure",
+				desc: "Reinforced protective housing for large-scale EV battery packs, engineered for maximum structural integrity and thermal safety during transport and operation.",
+			},
+			bg: {
+				title: "Корпус на високоволтова батерия",
+				desc: "Усилена защитна обвивка за големи батерийни пакети на електромобили, проектирана за максимална здравина и топлинна безопасност по време на транспорт и експлоатация.",
+			},
+			de: {
+				title: "Hochvolt-Batteriegehäuse",
+				desc: "Verstärktes Schutzgehäuse für großformatige EV-Batteriepakete, entwickelt für maximale strukturelle Integrität und thermische Sicherheit während des Transports und Betriebs.",
+			},
+			ro: {
+				title: "Carcasă baterie de înaltă tensiune",
+				desc: "Carcasă de protecție ranforsată pentru pachete mari de baterii EV, proiectată pentru integritate structurală maximă și siguranță termică în timpul transportului și funcționării.",
+			},
+		},
+	},
+	{
+		id: 9,
+		src: internalArch,
+		alt: "Internal Battery Cell Architecture",
+		translations: {
+			en: {
+				title: "Internal Cell Architecture",
+				desc: "Detailed interior view of a high-capacity modular battery system, showcasing complex busbar connections and individual cell alignment during quality inspection.",
+			},
+			bg: {
+				title: "Вътрешна архитектура на клетките",
+				desc: "Детайлен поглед върху вътрешността на модулна батерийна система с висок капацитет, показващ сложните връзки и подредбата на клетките по време на качествена инспекция.",
+			},
+			de: {
+				title: "Interne Zellenarchitektur",
+				desc: "Detaillierte Innenansicht eines modularen Hochkapazitäts-Batteriesystems, die die komplexen Busbar-Verbindungen und die Ausrichtung der einzelnen Zellen während der Qualitätsprüfung zeigt.",
+			},
+			ro: {
+				title: "Arhitectura internă a celulelor",
+				desc: "Vedere interioară detaliată a unui sistem modular de baterii de mare capacitate, prezentând conexiunile complexe și alinierea celulelor individuale în timpul inspecției de calitate.",
 			},
 		},
 	},

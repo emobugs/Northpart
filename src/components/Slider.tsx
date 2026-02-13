@@ -46,14 +46,15 @@ const Slider = () => {
 			opacity: 1,
 			y: 0,
 			duration: 0.8,
-			stagger: 0.2,
-			ease: "power3.out",
-			delay: 0.4,
+			stagger: 0.3,
+			ease: "EaseInOut",
+			delay: 0.2,
 		});
 	};
 
 	// 3. GSAP Анимация за панорамно движение (само мобилен)
 	useGSAP(() => {
+		if (finalSlides.length === 0) return;
 		const mm = gsap.matchMedia();
 
 		mm.add("(max-width: 768px)", () => {
@@ -84,7 +85,8 @@ const Slider = () => {
 	return (
 		<div className="relative w-full h-screen overflow-hidden bg-black">
 			<Swiper
-				onSlideChangeTransitionStart={onSlideChange}
+				onInit={(swiper) => onSlideChange(swiper)}
+				onSlideChangeTransitionStart={(swiper) => onSlideChange(swiper)}
 				modules={[Autoplay, Navigation, Pagination, EffectFade]}
 				effect="fade"
 				fadeEffect={{ crossFade: true }}
