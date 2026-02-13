@@ -116,7 +116,7 @@ const Slider = () => {
 									style={{ objectPosition: "center bottom" }}
 								/>
 								{/* Градиент, който "прелива" снимката в долния блок */}
-								<div className="absolute inset-x-0 bottom-0 h-200 bg-gradient-to-t from-[#1a1d21] to-transparent z-10 md:hidden" />
+								<div className="absolute inset-x-0 bottom-0 h-200 bg-gradient-to-t from-black/60 to-transparent z-10 md:hidden" />
 							</div>
 							{/* ДОЛНА ЧАСТ: Текст и Бутони (на мобилен) */}
 							<div className="relative flex-1 flex flex-col md:justify-center justify-start gap-2 py-6 md:absolute md:inset-0 md:z-20 md:bg-black/30 max-w-[100vw]">
