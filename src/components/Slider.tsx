@@ -1,10 +1,15 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
+
 // Import Swiper styles
+// @ts-ignore
 import "swiper/css";
+// @ts-ignore
 import "swiper/css/navigation";
+// @ts-ignore
 import "swiper/css/pagination";
+// @ts-ignore
 import "swiper/css/effect-fade";
 
 import img1 from "../assets/images/slider/ev.webp";
