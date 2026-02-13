@@ -124,7 +124,7 @@ const Slider = () => {
 									</p>
 									<a
 										href="#contact"
-										className="animate-text opacity-0 inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest transition-all shadow-lg text-center"
+										className="animate-text opacity-0 inline-block bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest transition-all shadow-lg text-center"
 									>
 										{commonCta}
 									</a>
