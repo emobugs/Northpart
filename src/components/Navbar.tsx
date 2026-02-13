@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
@@ -7,6 +7,23 @@ import logo from "../assets/logo.png";
 const Navbar: React.FC = () => {
 	const { t, i18n } = useTranslation();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const navRef = useRef<HTMLDivElement>(null);
+
+	/*nav close on click outside fuunctionality */
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				isMobileMenuOpen &&
+				navRef.current &&
+				!navRef.current.contains(event.target as Node)
+			) {
+				setIsMobileMenuOpen(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, [isMobileMenuOpen]);
 
 	const menuItems = [
 		{ id: "products", label: t("nav.products") },
@@ -25,7 +42,10 @@ const Navbar: React.FC = () => {
 	];
 
 	return (
-		<nav className="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md">
+		<nav
+			ref={navRef}
+			className="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md"
+		>
 			<div className="max-w-7xl w-full mx-auto h-20 flex relative justify-between">
 				<motion.a
 					initial={{ opacity: 0, y: -20 }}
@@ -101,48 +121,58 @@ const Navbar: React.FC = () => {
 				{/* Mobile Menu Overlay */}
 				<AnimatePresence>
 					{isMobileMenuOpen && (
-						<motion.div
-							initial={{ opacity: 0, y: -20 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -20 }}
-							className="absolute top-20 left-0 w-full bg-white border-b border-black/5 p-6 flex flex-col gap-6 md:hidden shadow-xl z-40"
-						>
-							{menuItems.map((item) => (
-								<a
-									aria-label={t(`nav.${item.label}`)}
-									key={item.id}
-									href={`#${item.id}`}
-									onClick={() => setIsMobileMenuOpen(false)} // Затваря менюто при клик
-									className="text-lg font-medium text-slate-900 hover:text-cyan-500 transition-colors"
+						<>
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								onClick={() => setIsMobileMenuOpen(false)} // Затваря при клик навсякъде отвън
+								className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
+							>
+								<motion.div
+									initial={{ opacity: 0, y: -20 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: -20 }}
+									className="absolute top-20 left-0 w-full bg-white border-b border-black/5 p-6 flex flex-col gap-6 md:hidden shadow-xl z-40"
 								>
-									{item.label}
-								</a>
-							))}
-
-							<div className="pt-4 border-t border-black/5 flex items-center justify-between">
-								<div className="flex gap-4">
-									{languages.map((lang) => (
-										<button
-											aria-label="Change language"
-											key={lang.code}
-											onClick={() => i18n.changeLanguage(lang.code)}
-											className={`text-sm font-bold ${
-												i18n.language === lang.code
-													? "text-cyan-500"
-													: "text-slate-400"
-											}`}
+									{menuItems.map((item) => (
+										<a
+											aria-label={t(`nav.${item.label}`)}
+											key={item.id}
+											href={`#${item.id}`}
+											onClick={() => setIsMobileMenuOpen(false)} // Затваря менюто при клик
+											className="text-lg font-medium text-slate-900 hover:text-cyan-500 transition-colors"
 										>
-											{lang.label}
-										</button>
+											{item.label}
+										</a>
 									))}
-								</div>
-								<Icon
-									icon="solar:globe-linear"
-									width="20"
-									className="text-slate-400"
-								/>
-							</div>
-						</motion.div>
+
+									<div className="pt-4 border-t border-black/5 flex items-center justify-between">
+										<div className="flex gap-4">
+											{languages.map((lang) => (
+												<button
+													aria-label="Change language"
+													key={lang.code}
+													onClick={() => i18n.changeLanguage(lang.code)}
+													className={`text-sm font-bold ${
+														i18n.language === lang.code
+															? "text-cyan-500"
+															: "text-slate-400"
+													}`}
+												>
+													{lang.label}
+												</button>
+											))}
+										</div>
+										<Icon
+											icon="solar:globe-linear"
+											width="20"
+											className="text-slate-400"
+										/>
+									</div>
+								</motion.div>
+							</motion.div>
+						</>
 					)}
 				</AnimatePresence>
 			</div>
