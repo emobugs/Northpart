@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
 	return (
 		<nav
 			ref={navRef}
-			className="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md"
+			className="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md bg-white/70"
 		>
 			<div className="max-w-7xl w-full mx-auto h-20 flex relative justify-between">
 				<motion.a
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
 							key={item.id}
 							href={`#${item.id}`}
 							aria-label={t(`nav.${item.label}`)}
-							className="text-sm font-medium hover:text-black transition-colors"
+							className="text-sm text-black font-medium hover:text-cyan-700 transition-colors"
 						>
 							{item.label}
 						</a>
@@ -126,8 +126,8 @@ const Navbar: React.FC = () => {
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
-								onClick={() => setIsMobileMenuOpen(false)} // Затваря при клик навсякъде отвън
-								className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
+								onClick={() => setIsMobileMenuOpen(false)}
+								className="fixed inset-0 bg-white/5 z-30 md:hidden"
 							>
 								<motion.div
 									initial={{ opacity: 0, y: -20 }}
