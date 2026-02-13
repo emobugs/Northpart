@@ -15,8 +15,31 @@ body {
 	display: none;
 }
 
+/* Hero */
+@media (max-width: 770px) {
+	.swiper-pagination {
+		/* Resets the default bottom position */
+		bottom: 15% !important;
+
+		left: 0;
+		width: 100%;
+		z-index: 10;
+	}
+
+	.hero-img {
+		object-position: 70% bottom !important;
+	}
+}
+
 .logo {
 	height: 40px;
+}
+
+.img-cnt {
+	background-position: center bottom !important;
+
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 * {

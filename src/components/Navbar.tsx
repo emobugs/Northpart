@@ -30,9 +30,9 @@ const Navbar: React.FC = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ ease: "easeIn" }}
 					href="#hero"
-					className="flex items-center gap-3 group"
+					className="flex items-center gap-3 group pl-5"
 				>
-					<img src={logo} alt="logo" className="logo" />
+					<img src={logo} alt="logo" className="h-[30px] md:h-[40px]" />
 				</motion.a>
 
 				{/* Desktop Menu */}
