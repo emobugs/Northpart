@@ -8,7 +8,18 @@
 	},
 	"hero": {
 		"common": {
-			"cta": "Talep Oluştur"
+			"cta": "Talep Oluştur",
+			"features_title": "Neden bizi seçmelisiniz?",
+			"features": [
+				{
+					"title": "Garantili Kalite",
+					"desc": "Uzun ömürlü ve güvenilir performanslı yüksek kaliteli bataryalar"
+				},
+				{
+					"title": "Rekabetçi Fiyatlar",
+					"desc": "Size para ve zaman kazandıran uygun fiyatlar"
+				}
+			]
 		},
 		"slides": [
 			{

@@ -8,7 +8,18 @@
 	},
 	"hero": {
 		"common": {
-			"cta": "Anfrage senden"
+			"cta": "Anfrage senden",
+			"features_title": "Warum uns wählen?",
+			"features": [
+				{
+					"title": "Garantierte Qualität",
+					"desc": "Hochwertige Batterien mit langer Lebensdauer und zuverlässiger Leistung"
+				},
+				{
+					"title": "Wettbewerbspreise",
+					"desc": "Günstige Preise, die Ihnen Geld und Zeit sparen"
+				}
+			]
 		},
 		"slides": [
 			{

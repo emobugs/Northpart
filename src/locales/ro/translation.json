@@ -8,7 +8,18 @@
 	},
 	"hero": {
 		"common": {
-			"cta": "Trimite o cerere"
+			"cta": "Trimite o cerere",
+			"features_title": "De ce să ne alegeți?",
+			"features": [
+				{
+					"title": "Calitate Garantată",
+					"desc": "Baterii de înaltă calitate cu durată lungă de viață și funcționare fiabilă"
+				},
+				{
+					"title": "Prețuri Competitive",
+					"desc": "Prețuri avantajoase care vă economisesc bani și timp"
+				}
+			]
 		},
 		"slides": [
 			{

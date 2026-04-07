@@ -8,7 +8,18 @@
 	},
 	"hero": {
 		"common": {
-			"cta": "Make an inquiry"
+			"cta": "Make an inquiry",
+			"features_title": "Why choose us?",
+			"features": [
+				{
+					"title": "Guaranteed Quality",
+					"desc": "High-quality batteries with long life and reliable performance"
+				},
+				{
+					"title": "Competitive Prices",
+					"desc": "Affordable prices that save you money and time"
+				}
+			]
 		},
 		"slides": [
 			{
