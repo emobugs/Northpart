@@ -25,8 +25,8 @@ export const getContactItems = (t: TFunction): ContactItem[] => [
 	{
 		type: "email",
 		label: t("contact.labels.email"),
-		val: "northpartbg@gmail.com",
-		href: "mailto:northpartbg@gmail.com",
+		val: "contacts@northpart.com",
+		href: "mailto:contacts@northpart.com",
 		icon: faEnvelope,
 		color: "cyan",
 	},
