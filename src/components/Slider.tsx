@@ -28,7 +28,6 @@ import { useTranslation } from "react-i18next";
 
 const FEATURE_ICONS = [faShield, faCoins];
 
-
 const Slider = () => {
 	const { t } = useTranslation();
 
@@ -108,7 +107,6 @@ const Slider = () => {
 				{finalSlides.map((slide) => (
 					<SwiperSlide key={slide.id}>
 						<div className="relative flex flex-col w-full h-full overflow-hidden bg-[#0b1120]">
-
 							{/* IMAGE — мобил: горни 42%, десктоп: цял екран */}
 							<div className="relative w-full h-[42%] overflow-hidden md:absolute md:inset-0 md:h-full">
 								<img
@@ -126,7 +124,6 @@ const Slider = () => {
 
 							{/* CONTENT — мобил: flex-1 под image, десктоп: overlay отдолу */}
 							<div className="flex-1 flex flex-col gap-3 px-5 pt-3 pb-5 md:absolute md:inset-x-0 md:bottom-0 md:z-10 md:px-20 md:pb-12 md:flex-none md:gap-5">
-
 								{/* Текст */}
 								<div className="text-center">
 									<h1 className="animate-text opacity-0 text-white font-extrabold uppercase leading-tight tracking-tight mb-2 md:mb-4 text-[1.3rem] md:text-5xl lg:text-6xl md:max-w-2xl md:mx-auto">
@@ -163,37 +160,49 @@ const Slider = () => {
 										<div className="flex-1 h-px bg-white/10" />
 									</div>
 									<div className="grid grid-cols-2 gap-x-6 gap-y-3">
-										{featureList.slice(0, 2).map((feat: { title: string; desc: string }, i: number) => (
-											<div key={i} className="flex items-start gap-2.5">
-												<div
-													className="shrink-0 w-11 h-11"
-													style={{
-														filter: "drop-shadow(0 0 7px rgba(6,182,212,0.7)) drop-shadow(0 0 14px rgba(6,182,212,0.35))",
-													}}
-												>
+										{featureList
+											.slice(0, 2)
+											.map(
+												(
+													feat: { title: string; desc: string },
+													i: number,
+												) => (
 													<div
-														className="w-full h-full flex items-center justify-center"
-														style={{
-															clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-															background: "linear-gradient(135deg, #0d2244 0%, #0a3575 100%)",
-														}}
+														key={i}
+														className="flex items-start gap-2.5"
 													>
-														<FontAwesomeIcon
-															icon={FEATURE_ICONS[i]}
-															className="text-cyan-300 text-base"
-														/>
+														<div
+															className="shrink-0 w-11 h-11"
+															style={{
+																filter: "drop-shadow(0 0 7px rgba(6,182,212,0.7)) drop-shadow(0 0 14px rgba(6,182,212,0.35))",
+															}}
+														>
+															<div
+																className="w-full h-full flex items-center justify-center"
+																style={{
+																	clipPath:
+																		"polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+																	background:
+																		"linear-gradient(135deg, #0d2244 0%, #0a3575 100%)",
+																}}
+															>
+																<FontAwesomeIcon
+																	icon={FEATURE_ICONS[i]}
+																	className="text-cyan-300 text-base"
+																/>
+															</div>
+														</div>
+														<div>
+															<p className="text-white font-bold text-xs md:text-sm leading-tight mb-0.5">
+																{feat.title}
+															</p>
+															<p className="text-slate-400 text-[0.65rem] md:text-xs leading-snug">
+																{feat.desc}
+															</p>
+														</div>
 													</div>
-												</div>
-												<div>
-													<p className="text-white font-bold text-xs md:text-sm leading-tight mb-0.5">
-														{feat.title}
-													</p>
-													<p className="text-slate-400 text-[0.65rem] md:text-xs leading-snug">
-														{feat.desc}
-													</p>
-												</div>
-											</div>
-										))}
+												),
+											)}
 									</div>
 								</div>
 							</div>
